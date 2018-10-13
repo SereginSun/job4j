@@ -2,7 +2,6 @@ package ru.job4j.fit;
 
 /**
  * Fit
- *
  * программа расчёта идеального веса.
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  *
