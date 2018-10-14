@@ -1,5 +1,4 @@
 package ru.job4j.fit;
-
 import org.junit.Test;
 import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.assertThat;
