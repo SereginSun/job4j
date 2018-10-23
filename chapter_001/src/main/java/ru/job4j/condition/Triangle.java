@@ -33,7 +33,7 @@ public class Triangle {
      * @return Вернуть площадь, если треугольник существует или -1, если треугольника нет.
      */
     public double area() {
-        double rsl = -1; // Мы устанавлием значение -1, т.к. может быть, что треуголька нет. Это значение говорит, что треугольника нет.
+        double rsl = -1;
         double ab = this.a.distanceTo(this.b);
         double ac = this.a.distanceTo(this.c);
         double bc = this.b.distanceTo(this.c );
