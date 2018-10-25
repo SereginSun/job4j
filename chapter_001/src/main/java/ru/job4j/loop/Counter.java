@@ -5,7 +5,7 @@ package ru.job4j.loop;
  *
  * @author Seregin Vladimir (SereginSun@yandex.ru)
  * @version 0.2
- * @since 24.10.2018
+ * @since 25.10.2018
  */
 public class Counter {
     public int add(int start, int finish) {

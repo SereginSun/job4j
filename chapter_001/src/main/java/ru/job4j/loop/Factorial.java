@@ -4,8 +4,8 @@ package ru.job4j.loop;
  * Factorial
  *
  * @author Seregin Vladimir (SereginSun@yandex.ru)
- * @version 0.1
- * @since 24.10.2018
+ * @version 0.2
+ * @since 25.10.2018
  */
 public class Factorial {
 
