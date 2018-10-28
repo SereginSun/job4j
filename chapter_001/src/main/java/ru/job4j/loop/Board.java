@@ -25,6 +25,7 @@ public class Board {
                     screen.append(" ");
                 }
             }
+            screen.append(line);
         }
         return screen.toString();
     }
