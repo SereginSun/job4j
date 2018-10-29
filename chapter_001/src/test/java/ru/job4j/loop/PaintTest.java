@@ -1,10 +1,11 @@
 package ru.job4j.loop;
 
-
 import org.junit.Test;
+
 import java.util.StringJoiner;
+
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Seregin Vladimir (SereginSun@yandex.ru)
@@ -36,6 +37,16 @@ public class PaintTest {
                                         .add("^^^^")
                                         .toString()));
     }
-
-
+    @Test
+    public void forPyramid() {
+        Paint paint = new Paint();
+        String rst = paint.pyramid(4);
+        System.out.println(rst);
+        assertThat(rst, is(new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
+                .add("   ^   ")
+                .add("  ^^^  ")
+                .add(" ^^^^^ ")
+                .add("^^^^^^^")
+                .toString()));
+    }
 }

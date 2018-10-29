@@ -21,7 +21,7 @@ public class Paint {
      * @return буфер строки.
      */
     public String leftTrl(int hieght) {
-        return this.loopBy(hieght, hieght, (row, column) -> row >= column - 1);
+        return this.loopBy(hieght, hieght, (row, column) -> row >=hieght - column - 1);
     }
 
     /**
@@ -30,10 +30,10 @@ public class Paint {
      * @return буфер строки.
      */
     public String pyramid(int hieght) {
-        return this.loopBy(hieght, 2 * hieght - 1, (row, column) -> row >= hieght - column - 1 && row + hieght -1 >= column);
+        return this.loopBy(hieght, 2 * hieght - 1, (row, column) -> row >= hieght - column - 1 && row + hieght - 1 >= column);
     }
 
-    private String loopBy(int hieght, int width, BePredicate<Integer, Integer> predict) {
+    private String loopBy(int hieght, int width, BiPredicate <Integer, Integer> predict) {
         StringBuilder screen = new StringBuilder();
         for(int row = 0; row != hieght; row++) {
             for(int column = 0; column != width; column++) {
