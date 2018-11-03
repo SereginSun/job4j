@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  * @author Seregin Vladimir (SereginSun@yandex.ru)
  * @version 0.1
  * @since 01.11.2018
- */
+    */
 public class CheckTest {
     @Test
     public void whenDataMonoByTrueThenTrue() {
@@ -25,5 +25,12 @@ public class CheckTest {
         boolean[] input = new boolean[] {true, false, true};
         boolean result = check.mono(input);
         assertThat(result, is(false));
+    }
+    @Test
+    public void whenDataMonoByFalseThenTrue() {
+        Check check = new Check();
+        boolean[] input = new boolean[] {false, false, false};
+        boolean result = check.mono(input);
+        assertThat(result, is(true));
     }
 }
