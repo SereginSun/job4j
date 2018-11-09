@@ -13,7 +13,13 @@ public class ArrayDuplicateTest {
         ArrayDuplicate duplicate = new ArrayDuplicate();
         String[] result = duplicate.removeDuplicates(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
-
     }
-
+    @Test
+    public void whenIntArrayHasDuplicatesThenDropIt() {
+        String[] input = {"Три", "Пять", "Девять", "Один", "Пять"};
+        String[] expect = {"Три", "Пять", "Девять", "Один"};
+        ArrayDuplicate duplicate = new ArrayDuplicate();
+        String[] result = duplicate.removeDuplicates(input);
+        assertThat(result, arrayContainingInAnyOrder(expect));
+    }
 }
