@@ -37,7 +37,7 @@ public class Logic {
         return rst;
     }
 
-    public boolean isFree(Cell ... cells) {
+    public boolean isFree(Cell... cells) {
         boolean result = cells.length > 0;
         for (Cell cell : cells) {
             if (this.findBy(cell) != -1) {
@@ -68,28 +68,20 @@ public class Logic {
 
     public boolean isWin() {
         int[][] table = this.convert();
-        boolean result = true;
-        int res = 0;
+        boolean resVerticalWin = false;
+        boolean resHorisontalWin = false;
         for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table[i].length; j++) {
-                res += table[i][j];
+            resVerticalWin = true;
+            resHorisontalWin = true;
+            for (int j = 0; j < table.length; j++) {
+                resVerticalWin = resVerticalWin && (table[i][j] == 1);
+                resHorisontalWin = resHorisontalWin && (table[j][i] == 1);
             }
-                if (res == table.length) {
-                    result = true;
-                    break;
-                }
-                res = 0;
-            for (int j = 0; j < table[i].length; j++) {
-                res += table[j][i];
+            if (resVerticalWin || resHorisontalWin) {
+                return true;
             }
-                if (res == table.length) {
-                    result = true;
-                    break;
-                }
-                res = 0;
         }
-
-        return result;
+        return false;
     }
 
     private int[][] convert() {
