@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
  * @since 31.10.2018
  */
 public class FindLoopTest {
-
     @Test
     public void whenArrayHasLengh5Then0() {
         FindLoop find = new FindLoop();
@@ -30,5 +29,4 @@ public class FindLoopTest {
         int expect = -1;
         assertThat(result, is(expect));
     }
-
 }

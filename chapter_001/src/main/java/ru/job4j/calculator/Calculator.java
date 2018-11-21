@@ -31,7 +31,6 @@ public class Calculator {
     public double getResult() {
         return this.result;
     }
-
     /**
      * method subtract
      *
@@ -44,7 +43,6 @@ public class Calculator {
     public void subtract(double first, double second) {
         this.result = first - second;
     }
-
     /**
      * method div
      *
@@ -57,7 +55,6 @@ public class Calculator {
     public void div(double first, double second) {
         this.result = first / second;
     }
-
     /**
      * method multiple
      *

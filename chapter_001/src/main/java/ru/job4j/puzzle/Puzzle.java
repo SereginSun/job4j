@@ -81,7 +81,6 @@ public class Puzzle extends Application {
             alert.showAndWait();
         }
     }
-
     private Group buildGrid() {
         Group panel = new Group();
         for (int y = 0; y != this.size; y++) {
@@ -93,7 +92,6 @@ public class Puzzle extends Application {
         }
         return panel;
     }
-
     @Override
     public void start(Stage stage) {
         BorderPane border = new BorderPane();
@@ -114,7 +112,6 @@ public class Puzzle extends Application {
         stage.show();
         this.refresh(border);
     }
-
     private void refresh(final BorderPane border) {
         Group grid = this.buildGrid();
         this.logic.clean();
@@ -122,7 +119,6 @@ public class Puzzle extends Application {
         this.generate(true, 6, grid);
         this.generate(false, 5, grid);
     }
-
     public void generate(boolean block, int total,  Group grid) {
         int count = total;
         final Random random = new Random();
@@ -138,7 +134,6 @@ public class Puzzle extends Application {
             }
         }
     }
-
     public void add(Figure figure, Group grid) {
         this.logic.add(figure);
         Cell position = figure.position();
@@ -151,7 +146,6 @@ public class Puzzle extends Application {
                 )
         );
     }
-
     private Cell extract(double graphX, double graphY) {
         return new Cell((int) graphX / 40, (int) graphY / 40);
     }

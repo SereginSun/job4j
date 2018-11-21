@@ -12,7 +12,7 @@ public class ArrayDuplicate {
      * @param array массив строк с дубликатами.
      * @return массив строк без дубликатов.
      */
-    public String[] removeDuplicates(String[] array) {
+    public String[] removeDuplicate(String[] array) {
         int unique = array.length;
         for(int out = 0; out < unique; out++) {
             for(int in = out + 1; in < unique; in++ ) {

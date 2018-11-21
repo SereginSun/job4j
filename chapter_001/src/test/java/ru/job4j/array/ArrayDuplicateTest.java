@@ -11,7 +11,7 @@ public class ArrayDuplicateTest {
         String[] input = {"Привет", "Мир", "Привет", "Супер", "Мир"};
         String[] expect = {"Привет", "Мир", "Супер"};
         ArrayDuplicate duplicate = new ArrayDuplicate();
-        String[] result = duplicate.removeDuplicates(input);
+        String[] result = duplicate.removeDuplicate(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
     }
     @Test
@@ -19,7 +19,7 @@ public class ArrayDuplicateTest {
         String[] input = {"Три", "Пять", "Девять", "Один", "Пять"};
         String[] expect = {"Три", "Пять", "Девять", "Один"};
         ArrayDuplicate duplicate = new ArrayDuplicate();
-        String[] result = duplicate.removeDuplicates(input);
+        String[] result = duplicate.removeDuplicate(input);
         assertThat(result, arrayContainingInAnyOrder(expect));
     }
 }

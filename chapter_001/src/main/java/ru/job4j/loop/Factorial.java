@@ -1,5 +1,4 @@
 package ru.job4j.loop;
-
 /**
  * Factorial
  *
@@ -8,7 +7,6 @@ package ru.job4j.loop;
  * @since 25.10.2018
  */
 public class Factorial {
-
     /**
      * calc
      *

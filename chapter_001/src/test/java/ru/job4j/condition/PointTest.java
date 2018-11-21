@@ -5,7 +5,6 @@ import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.junit.Assert.*;
 
 public class PointTest {
-
     @Test
     public void distanceTo() {
         Point a = new Point(0, 1);

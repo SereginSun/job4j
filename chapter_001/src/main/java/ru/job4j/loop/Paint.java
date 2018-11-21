@@ -14,7 +14,6 @@ public class Paint {
     public String rightTrl(int hieght) {
         return this.loopBy(hieght, hieght, (row, column) -> row >= column);
     }
-
     /**
      * leftTrl - метод, рисующий половину пирамиды слева.
      * @param hieght - высота пирамиды.
@@ -23,7 +22,6 @@ public class Paint {
     public String leftTrl(int hieght) {
         return this.loopBy(hieght, hieght, (row, column) -> row >=hieght - column - 1);
     }
-
     /**
      * pyramid - метод рисующий пирамиду.
      * @param hieght - высота пирамиды.
@@ -32,7 +30,6 @@ public class Paint {
     public String pyramid(int hieght) {
         return this.loopBy(hieght, 2 * hieght - 1, (row, column) -> row >= hieght - column - 1 && row + hieght - 1 >= column);
     }
-
     private String loopBy(int hieght, int width, BiPredicate <Integer, Integer> predict) {
         StringBuilder screen = new StringBuilder();
         for(int row = 0; row != hieght; row++) {

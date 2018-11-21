@@ -1,5 +1,4 @@
 package ru.job4j.condition;
-
 /**
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  * @version $Id$

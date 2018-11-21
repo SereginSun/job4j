@@ -5,11 +5,10 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-
 public class LogicTest {
     @Test
     public void whenVerticalWin() {
-        Logic logic = new Logic(5) {
+        Logic algorithm = new Logic(5) {
             @Override
             public int[][] convert() {
                 return new int[][]{
@@ -21,12 +20,11 @@ public class LogicTest {
                 };
             }
         };
-        assertThat(logic.isWin(), is(true));
+        assertThat(algorithm.isWin(), is(true));
     }
-
     @Test
     public void whenHorizontalWin() {
-        Logic logic = new Logic(5) {
+        Logic algorithm = new Logic(5) {
             @Override
             public int[][] convert() {
                 return new int[][]{
@@ -38,12 +36,11 @@ public class LogicTest {
                 };
             }
         };
-        assertThat(logic.isWin(), is(true));
+        assertThat(algorithm.isWin(), is(true));
     }
-
     @Test
     public void whenNotWin() {
-        Logic logic = new Logic(5) {
+        Logic algorithm = new Logic(5) {
             @Override
             public int[][] convert() {
                 return new int[][]{
@@ -55,6 +52,6 @@ public class LogicTest {
                 };
             }
         };
-        assertThat(logic.isWin(), is(false));
+        assertThat(algorithm.isWin(), is(false));
     }
 }

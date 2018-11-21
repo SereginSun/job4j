@@ -1,5 +1,4 @@
 package ru.job4j.fit;
-
 /**
  * Fit
  *
@@ -20,7 +19,6 @@ public class Fit {
     public double manWeight(double height) {
         return (height - 100) * 1.15;
     }
-
     /**
      * womanWright - метод расчитывающий идеальный вес для женщины.
      *

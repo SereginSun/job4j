@@ -26,5 +26,4 @@ public class TurnTest {
         int[] expect = new int[] {9, 7, 5, 3};
         assertThat(result, is(expect));
     }
-
 }

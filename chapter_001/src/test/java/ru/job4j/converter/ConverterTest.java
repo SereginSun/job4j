@@ -11,24 +11,22 @@ public class ConverterTest {
         int result = converter.rubleToDollar(60);
         assertThat(result, is(1));
     }
-
     @Test
     public void when70RubleToEuroThen1() {
-        Converter converter = new Converter();
-        int result = converter.rubleToEuro(70);
+        Converter currency = new Converter();
+        int result = currency.rubleToEuro(70);
         assertThat(result, is(1));
     }
-
     @Test
     public void when1DollarToRubleThen60() {
-        Converter converter = new Converter();
-        int result = converter.dollarToRuble(1);
+        Converter currency = new Converter();
+        int result = currency.dollarToRuble(1);
         assertThat(result, is(60));
     }
     @Test
     public void when1EuroToRubleThen70() {
-        Converter converter = new Converter();
-        int result = converter.euroToRuble(1);
+        Converter currency = new Converter();
+        int result = currency.euroToRuble(1);
         assertThat(result, is(70));
     }
 }
