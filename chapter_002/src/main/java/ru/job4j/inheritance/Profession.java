@@ -6,8 +6,8 @@ package ru.job4j.inheritance;
  * @since 28.11.2018
  */
 public class Profession {
-    String name;
-    String profession;
+    private String name;
+    private String profession;
 
     /**
      * метод getName() возвращает имя при вызове его для любого класса
