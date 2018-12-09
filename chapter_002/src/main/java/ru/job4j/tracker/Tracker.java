@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * класс Item
@@ -44,6 +45,7 @@ public class Tracker {
      * @param item - новый обьект массива items который замещает найденый id.
      */
     public void replace(String id, Item item) {
+        item.setId(id);
         for (int i = 0; i != this.position; i++) {
             //if (items[i] == null) {
             //    break;
@@ -77,8 +79,7 @@ public class Tracker {
     public void delete(String id) {
         for (int i = 0; i != position; i++) {
             if (this.items[i].getId().equals(id)) {
-                this.items[i] = items[position - 1];
-                items[position - 1] = null;
+                System.arraycopy(this.items, i + 1, this.items, i, items.length - 1 - i);
                 position--;
                 break;
             }
@@ -89,24 +90,21 @@ public class Tracker {
      * @return - список всех заявок.
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for (int i = 0; i != this.position; i++) {
-            result[i] = this.items[i];
-        }
-        return result;
+        return Arrays.copyOf(this.items, this.position);
     }
     /**
      * Метод findByName() возвращает список заявок по имени.
      * @return массив.
      */
-    public Item findByName(String key) {
-        Item result = null;
-        for (Item item : items) {
-            if (item.getName().equals(key) && item != null) {
-                result = item;
-                break;
+    public Item[] findByName(String name) {
+        int count = 0;
+        Item[] namedItem = new Item[position];
+        for (Item item: items) {
+            if (item != null && item.getName().equals(name)) {
+                namedItem[count] = item;
+                count++;
             }
         }
-        return result;
+        return Arrays.copyOf(namedItem, count);
     }
 }
