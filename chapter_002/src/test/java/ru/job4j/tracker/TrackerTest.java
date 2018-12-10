@@ -46,12 +46,12 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item first = new Item("test1", "testDescription1", 123L);
         tracker.add(first);
-        Item second = new Item("test2", "testDescription2", 123L);
+        Item second = new Item("test1", "testDescription2", 123L);
         tracker.add(second);
         Item third = new Item("test3", "testDescription3", 123L);
         tracker.add(third);
         Item[] itemsExpected = {first, second};
-        assertThat(tracker.findByName("test2"), is(itemsExpected));
+        assertThat(tracker.findByName("test1"), is(itemsExpected));
     }
     @Test
     public void whenCallFindByIdMethodThenTrackerGetItem() {
