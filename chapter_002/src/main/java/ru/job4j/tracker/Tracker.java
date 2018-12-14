@@ -44,17 +44,15 @@ public class Tracker {
      * @param id - аргумент сравниваеться с id элементов массива items.
      * @param item - новый обьект массива items который замещает найденый id.
      */
-    public void replace(String id, Item item) {
+    public boolean replace(String id, Item item) {
         item.setId(id);
         for (int i = 0; i != this.position; i++) {
-            //if (items[i] == null) {
-            //    break;
-            //}
             if (item.getId().equals(id)) {
                 this.items[i] = item;
                 break;
             }
         }
+        return false;
     }
     /**
      * Метод findById() возвращает заявку из массива по id.
@@ -76,7 +74,7 @@ public class Tracker {
      * Метод delete() удаляет элемент из массива по id
      * @param id
      */
-    public void delete(String id) {
+    public boolean delete(String id) {
         for (int i = 0; i != position; i++) {
             if (this.items[i].getId().equals(id)) {
                 System.arraycopy(this.items, i + 1, this.items, i, items.length - 1 - i);
@@ -84,6 +82,7 @@ public class Tracker {
                 break;
             }
         }
+        return false;
     }
     /**
      * Метод findAll() возвращает список всех заявок.
