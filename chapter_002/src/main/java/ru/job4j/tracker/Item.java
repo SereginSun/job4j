@@ -17,7 +17,7 @@ public class Item {
     public Item() {
     }
 
-    public Item( String name, String description, long create) {
+    public Item(String name, String description, long create) {
         this.name = name;
         this.description = description;
         this.create = create;
@@ -31,7 +31,7 @@ public class Item {
         this.id = id;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 

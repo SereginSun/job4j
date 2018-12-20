@@ -11,8 +11,6 @@ public class Doctor extends Profession {
      * @param patient - пациент
      * @return sickness - болезнь класса Diagnose
      */
-    public Diagnose heal(Patient patient) {
-        Diagnose sickness;
-        return sickness = new Diagnose();
+    public void heal(Patient patient) {
     }
 }
