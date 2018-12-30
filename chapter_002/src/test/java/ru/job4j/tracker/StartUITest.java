@@ -15,14 +15,22 @@ public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private final String menu = new StringBuilder()
-            .append("Меню.\r\n")
-            .append("0. Добавить новую заявку.\r\n")
-            .append("1. Показать список всех заявок.\r\n")
-            .append("2. Редактировать заявку.\r\n")
-            .append("3. Удалить заявку.\r\n")
-            .append("4. Найти заявку по ID.\r\n")
-            .append("5. Найти заявку по названию.\r\n")
-            .append("6. Выход из программы.\r\n")
+            .append("Меню.")
+            .append(System.lineSeparator())
+            .append("0. Добавить новую заявку.")
+            .append(System.lineSeparator())
+            .append("1. Показать список всех заявок.")
+            .append(System.lineSeparator())
+            .append("2. Редактировать заявку.")
+            .append(System.lineSeparator())
+            .append("3. Удалить заявку.")
+            .append(System.lineSeparator())
+            .append("4. Найти заявку по ID.")
+            .append(System.lineSeparator())
+            .append("5. Найти заявку по названию.")
+            .append(System.lineSeparator())
+            .append("6. Выход из программы.")
+            .append(System.lineSeparator())
             .toString();
 
     @Before
@@ -46,8 +54,10 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                             .append(menu)
-                            .append("------------ Добавление новой заявки ------------" + "\r\n")
-                            .append("------------ Новая заявка с getID: " + tracker.findAll()[0].getId() + "------------\r\n")
+                            .append("------------ Добавление новой заявки ------------")
+                            .append(System.lineSeparator())
+                            .append("------------ Новая заявка с getID: " + tracker.findAll()[0].getId() + "------------")
+                            .append(System.lineSeparator())
                             .append(menu)
                             .toString()
                 ));
@@ -63,8 +73,10 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                             .append(menu)
-                            .append("------------ Редактирование заявки ------------" + "\r\n")
-                            .append("Заявки с ID: " + item.getId() + "не существует." + "\r\n")
+                            .append("------------ Редактирование заявки ------------")
+                            .append(System.lineSeparator())
+                            .append("Заявки с ID: " + item.getId() + "не существует.")
+                            .append(System.lineSeparator())
                             .append(menu)
                             .toString()
                 ));
@@ -82,8 +94,10 @@ public class StartUITest {
                 is(
                         new StringBuilder()
                             .append(menu)
-                            .append("------------ Удаление заявки ------------" + "\r\n")
-                            .append("Такой заявки не существует!" + "\r\n")
+                            .append("------------ Удаление заявки ------------")
+                            .append(System.lineSeparator())
+                            .append("Такой заявки не существует!")
+                            .append(System.lineSeparator())
                             .append(menu)
                             .toString()
                 ));
