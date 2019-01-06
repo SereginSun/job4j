@@ -14,7 +14,7 @@ public class Item {
     private long create;
     private String[] comment;
 
-    public Item() {
+    public Item(String name, String desc) {
     }
 
     public Item(String name, String description, long create) {
