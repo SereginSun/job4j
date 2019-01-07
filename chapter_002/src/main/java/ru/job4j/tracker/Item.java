@@ -61,4 +61,11 @@ public class Item {
     public void setComment(String[] comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s, Название: %s, Описание: %s",
+                getId(), getName(), getDescription()
+        );
+    }
 }

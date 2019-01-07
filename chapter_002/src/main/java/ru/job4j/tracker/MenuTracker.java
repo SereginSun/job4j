@@ -131,9 +131,7 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.findAll()) {
-                System.out.println(String.format("ID: %s, Название: %s, Описание: %s",
-                        item.getId(), item.getName(), item.getDescription())
-                );
+                System.out.println(item.toString());
             }
         }
 
@@ -165,7 +163,13 @@ public class MenuTracker {
             String name = input.ask("Пожалуйста, введите имя новой заявки:");
             String desc = input.ask("Пожалуйста, введите описание новой заявки:");
             Item item = new Item(name, desc);
-            tracker.replace(id, item);
+            if (tracker.replace(id, item)) {
+                System.out.println("Заявка отредактирована. Новое имя заявки: " + item.getName() + " " +
+                        "Описание новой заявки: " + item.getDescription()
+                );
+            } else {
+                System.out.println("Заявки с ID: " + id + "не существует.");
+            }
         }
 
         @Override
@@ -193,7 +197,11 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Удаление заявки ------------");
             String id = input.ask("Пожалуйста, введите ID удаляемой заявки: ");
-            tracker.delete(id);
+            if (tracker.delete(id)) {
+                System.out.println("Заявка удалена!");
+            } else {
+                System.out.println("Заявки с ID: " + id + "не существует.");
+            }
         }
 
         @Override
@@ -222,9 +230,7 @@ public class MenuTracker {
             System.out.println("------------ Поиск заявки по ID ------------");
             String id = input.ask("Пожалуйста, введите ID заявки: ");
             Item item = tracker.findById(id);
-            System.out.println(String.format("ID: %s, Название: %s, Описание: %s",
-                    item.getId(), item.getName(), item.getDescription())
-            );
+            System.out.println(item.toString());
         }
 
         @Override
@@ -253,9 +259,7 @@ public class MenuTracker {
             System.out.println("------------ Поиск заявки по имени ------------");
             String name = input.ask("Пожалуйста, введите имя заявки: ");
             for (Item item : tracker.findByName(name)) {
-                System.out.println(String.format("\"ID: %s, Название: %s, Описание: %s",
-                        item.getId(), item.getName(), item.getDescription())
-                );
+                System.out.println(item.toString());
             }
         }
 
