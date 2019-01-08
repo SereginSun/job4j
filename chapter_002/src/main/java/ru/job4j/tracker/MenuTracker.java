@@ -230,7 +230,7 @@ public class MenuTracker {
             System.out.println("------------ Поиск заявки по ID ------------");
             String id = input.ask("Пожалуйста, введите ID заявки: ");
             Item item = tracker.findById(id);
-            System.out.println(item.toString());
+            System.out.println(item);
         }
 
         @Override
@@ -259,7 +259,7 @@ public class MenuTracker {
             System.out.println("------------ Поиск заявки по имени ------------");
             String name = input.ask("Пожалуйста, введите имя заявки: ");
             for (Item item : tracker.findByName(name)) {
-                System.out.println(item.toString());
+                System.out.println(item);
             }
         }
 
