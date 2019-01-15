@@ -7,7 +7,7 @@ import java.lang.String;
 /**
  *класс StartUI
  * @author Vladimir Seregin (SereginSun@yandex.ru)
- * @version 1.0.1
+ * @version 1.0.2
  * @since 14.12.2018
  */
 
@@ -71,7 +71,7 @@ public class StartUI {
      * Основной цикл программы
      */
     public void init() {
-        String s;
+        //String s;
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
         menu.fillActions();
@@ -80,9 +80,9 @@ public class StartUI {
         }
         do {
             menu.Show();
-            s = input.ask("Введите пункт меню: ");
-            menu.select(Integer.valueOf(s));
+            menu.select(input.ask("Введите пункт меню: ", range));
         } while (!"да".equals(this.input.ask("Выход? (да): ")));
+    }
 
         /*boolean exit = false;
         while (!exit) {
@@ -204,9 +204,8 @@ public class StartUI {
          * Запуск программы
          * @param args
          */
-     /*   public static void main(String[]args){
-            new StartUI(new ConsoleInput(), new Tracker()).init();
-        }*/
+    public static void main(String[] args) {
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
 
