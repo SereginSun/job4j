@@ -39,6 +39,6 @@ public class StubInput implements Input {
 
     @Override
     public int ask(String question, List<Integer> range) {
-        throw new UnsupportedOperationException("UnsupportedOperationException");
+        return Integer.valueOf(this.value[this.position++]);
     }
 }

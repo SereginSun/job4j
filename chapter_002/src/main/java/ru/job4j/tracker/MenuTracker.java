@@ -174,7 +174,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return String.format("%s. %s", this.key, this.info());
+            return String.format("%s. %s", this.key, this.info);
         }
     }
 
