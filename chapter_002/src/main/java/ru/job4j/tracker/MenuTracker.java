@@ -53,7 +53,7 @@ public class MenuTracker {
     public void fillActions() {
         this.actions.add(new AddItem(0, "Добавить новую заявку."));
         this.actions.add(new ShowItems(1, "Показать список всех заявок."));
-        this.actions.add(new UpdateItem(2, "Редактирование заявки."));
+        this.actions.add(new UpdateItem(2, "Редактировать заявку."));
         this.actions.add(new DeleteItem(3, "Удалить заявку."));
         this.actions.add(new FindById(4, "Найти заявку по ID."));
         this.actions.add(new FindByName(5, "Найти заявку по названию."));
@@ -103,8 +103,6 @@ public class MenuTracker {
             Item item = new Item(name, desc);
             tracker.add(item);
             System.out.println("------------ Новая заявка с ID: " + item.getId());
-            System.out.println("------------ Новая заявка с Именем: " + item.getName());
-            System.out.println("------------ Новая заявка с Описанием: " + item.getDescription());
         }
 
         @Override
@@ -168,7 +166,7 @@ public class MenuTracker {
                         "Описание новой заявки: " + item.getDescription()
                 );
             } else {
-                System.out.println("Заявки с ID: " + id + "не существует.");
+                System.out.println("Заявки с ID: " + id + " не существует.");
             }
         }
 
@@ -200,7 +198,7 @@ public class MenuTracker {
             if (tracker.delete(id)) {
                 System.out.println("Заявка удалена!");
             } else {
-                System.out.println("Заявки с ID: " + id + "не существует.");
+                System.out.println("Заявки с ID: " + id + " не существует.");
             }
         }
 
