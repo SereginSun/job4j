@@ -42,4 +42,13 @@ public class ValidateInputTest {
         input.ask("Пожалуйста, выберите пункт меню", range);
         assertThat(this.mem.toString(), is(String.format("Пожалуйста, введите номер позиции ещё раз.%n")));
     }
+
+    @Test
+    public void whenInInputOutOfMenu() {
+        ValidateInput input = new ValidateInput(new StubInput(new String[] {"Invalid","-1", "1"}));
+        List<Integer> range = new ArrayList<>();
+        range.add(2);
+        input.ask("Пожалуйста, выберите пункт меню", range);
+        assertThat(this.mem.toString(), is(String.format("Пожалуйста, введите номер позиции ещё раз.%n")));
+    }
 }

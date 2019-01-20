@@ -30,10 +30,10 @@ public class ValidateInput implements Input {
             try {
                 value = this.input.ask(question, range);
                 invalid = false;
-            } catch (MenuOutException moe) {
-                System.out.println("Пожалуйста, введите номер позиции из меню.");
             } catch (NumberFormatException nfe) {
                 System.out.println("Пожалуйста, введите номер позиции ещё раз.");
+            } catch (MenuOutException moe) {
+                System.out.println("Пожалуйста, введите номер позиции из меню.");
             }
         } while (invalid);
         return value;
