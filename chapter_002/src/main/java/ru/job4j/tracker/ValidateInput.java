@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ValidateInput implements Input {
 
-    private final Input input;
+        private final Input input;
 
     public ValidateInput(final Input input) {
         this.input = input;
