@@ -21,7 +21,7 @@ public class Logic {
         this.figures[this.index++] = figure;
     }
 
-    public boolean move(Cell source, Cell dest) throws FigureNotFoundException, OccupiedWayException, ImpossibleMoveException {
+    public boolean move(Cell source, Cell dest)  {
         int index = this.findBy(source);
         if (index == -1) {
             throw new FigureNotFoundException("В заданой ячейке нет фигуры!");

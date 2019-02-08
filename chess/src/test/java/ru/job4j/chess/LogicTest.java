@@ -153,7 +153,7 @@ public class LogicTest {
     @Test
     public void whenQueenMoveFromD1ToD7ThenFalse() {
         Logic logic = new Logic();
-        logic.add(new QueenBlack(Cell.D1));
+        logic.add(new QeenBlack(Cell.D1));
         logic.add(new PawnBlack(Cell.D5));
         try {
             logic.move(Cell.D1, Cell.D7);
@@ -165,28 +165,28 @@ public class LogicTest {
     @Test
     public void whenQueenMoveFromD1ToD5ThenTrue() {
         Logic logic = new Logic();
-        logic.add(new QueenBlack(Cell.D1));
+        logic.add(new QeenBlack(Cell.D1));
         assertThat(logic.move(Cell.D1, Cell.D5), is(true));
     }
 
     @Test
     public void whenQueenMoveFromD1ToA1ThenTrue() {
         Logic logic = new Logic();
-        logic.add(new QueenBlack(Cell.D1));
+        logic.add(new QeenBlack(Cell.D1));
         assertThat(logic.move(Cell.D1, Cell.A1), is(true));
     }
 
     @Test
     public void whenQueenMoveFromD1ToG4ThenTrue() {
         Logic logic = new Logic();
-        logic.add(new QueenBlack(Cell.D1));
+        logic.add(new QeenBlack(Cell.D1));
         assertThat(logic.move(Cell.D1, Cell.G4), is(true));
     }
 
     @Test
     public void whenQueenMoveFromD1ToF5ThenFalse() {
         Logic logic = new Logic();
-        logic.add(new QueenBlack(Cell.D1));
+        logic.add(new QeenBlack(Cell.D1));
         try {
             logic.move(Cell.D1, Cell.F5);
         } catch (ImpossibleMoveException ime) {

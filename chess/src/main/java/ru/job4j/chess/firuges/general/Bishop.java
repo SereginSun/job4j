@@ -53,11 +53,13 @@ public abstract class Bishop implements Figure {
     }
 
     public static Cell findCell(int x, int y) {
+        Cell rst = Cell.A1;
         for (Cell cell : Cell.values()) {
             if (cell.x == x && cell.y == y) {
-                return cell;
+                rst = cell;
+                break;
             }
         }
-        return null;
+        return rst;
     }
 }

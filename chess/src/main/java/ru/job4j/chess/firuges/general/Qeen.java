@@ -12,11 +12,11 @@ import static ru.job4j.chess.firuges.general.Bishop.isDiagonal;
  * @version $Id$
  * @since 06.02.2019
  */
-public abstract class Queen implements Figure {
+public abstract class Qeen implements Figure {
 
     private final Cell position;
 
-    public Queen(final Cell position) {
+    public Qeen(final Cell position) {
         this.position = position;
     }
 

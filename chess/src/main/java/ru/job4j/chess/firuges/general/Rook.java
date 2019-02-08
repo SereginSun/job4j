@@ -4,7 +4,7 @@ import ru.job4j.chess.exceptions.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
-import static ru.job4j.chess.firuges.general.Queen.isStraight;
+import static ru.job4j.chess.firuges.general.Qeen.isStraight;
 
 /**
  *
