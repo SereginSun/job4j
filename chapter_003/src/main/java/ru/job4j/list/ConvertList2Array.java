@@ -1,5 +1,6 @@
 package ru.job4j.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,5 +30,22 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    /**
+     * The method convert() go through all the elements
+     * of all the arrays in the list and add them
+     * to one common list Integer.
+     * @param list list of arrays
+     * @return list of Integer
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] i : list) {
+            for (int j : i) {
+                result.add(j);
+            }
+        }
+        return result;
     }
 }
