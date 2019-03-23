@@ -52,11 +52,11 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         assertThat(new String(out.toByteArray()),
                 is(
-                        new StringBuilder()
+                        new     StringBuilder()
                             .append(menu)
                             .append("------------ Добавление новой заявки ------------")
                             .append(System.lineSeparator())
-                            .append("------------ Новая заявка с ID: " + tracker.findAll()[0].getId())
+                            .append("------------ Новая заявка с ID: " + tracker.findAll().get(0).getId())
                             .append(System.lineSeparator())
                             .toString()
                 ));

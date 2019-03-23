@@ -1,6 +1,8 @@
-package ru.job4j.Singleton;
+package ru.job4j.singleton;
 
 import ru.job4j.tracker.Item;
+
+import java.util.List;
 
 /**
  * @author Vladimir Seregin (SereginSun@yandex.ru)
@@ -11,7 +13,7 @@ public interface TrackerSingleInterface {
 
     Item add(Item item);
 
-    Item[] findAll();
+    List<Item> findAll();
 
     boolean delete(String id);
 
@@ -19,5 +21,5 @@ public interface TrackerSingleInterface {
 
     Item findById(String id);
 
-    Item[] findByName(String key);
+    List<Item> findByName(String key);
 }

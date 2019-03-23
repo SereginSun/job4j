@@ -1,6 +1,6 @@
-package ru.job4j.Singleton;
+package ru.job4j.singleton;
 /**
- * Шаблон проектирования Singleton
+ * Шаблон проектирования singleton
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  * @version $Id$
  * @since 25.01.2019

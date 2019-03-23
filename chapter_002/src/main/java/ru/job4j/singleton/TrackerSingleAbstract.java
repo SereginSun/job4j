@@ -1,16 +1,16 @@
-package ru.job4j.Singleton;
+package ru.job4j.singleton;
 
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
+
+import java.util.List;
 
 /**
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  * @version $Id$
  * @since 25.01.2019
  */
-public enum  TrackerSingleEnum implements TrackerSingleInterface {
-
-    INSTANCE;
+public abstract class TrackerSingleAbstract implements TrackerSingleInterface {
 
     private Tracker tracker = new Tracker();
 
@@ -20,7 +20,7 @@ public enum  TrackerSingleEnum implements TrackerSingleInterface {
     }
 
     @Override
-    public Item[] findAll() {
+    public List<Item> findAll() {
         return this.tracker.findAll();
     }
 
@@ -40,7 +40,7 @@ public enum  TrackerSingleEnum implements TrackerSingleInterface {
     }
 
     @Override
-    public Item[] findByName(String key) {
+    public List<Item> findByName(String key) {
         return this.tracker.findByName(key);
     }
 }

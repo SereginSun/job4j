@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *класс MenuTracker
+ * класс MenuTracker
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  * @version 1.0.1
  * @since 06.01.2019
@@ -13,17 +13,17 @@ import java.util.List;
 public class MenuTracker {
 
     /**
-     * @param input хранит ссылку на объект.
+     * input хранит ссылку на объект.
      */
     private Input input;
 
     /**
-     * @param tracker хранит ссылку на объект.
+     * tracker хранит ссылку на объект.
      */
     private Tracker tracker;
 
     /**
-     * @param хранит ссылку на объект типа UserAction.
+     * хранит ссылку на объект типа UserAction.
      */
     private List<UserAction> actions = new ArrayList<>();
 

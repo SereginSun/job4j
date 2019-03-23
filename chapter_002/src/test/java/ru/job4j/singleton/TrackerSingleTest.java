@@ -1,4 +1,4 @@
-package ru.job4j.Singleton;
+package ru.job4j.singleton;
 
 import org.junit.Test;
 
