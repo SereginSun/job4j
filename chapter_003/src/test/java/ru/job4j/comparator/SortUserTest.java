@@ -7,7 +7,17 @@ import java.util.*;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+/**
+ * Test for class SortUser
+ * @author Vladimir Seregin (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 01.04.2019
+ */
 public class SortUserTest {
+
+    /**
+     * Test for sorting of Users by their age.
+     */
     @Test
     public void whenSortedByAge() {
         SortUser testUser = new SortUser();

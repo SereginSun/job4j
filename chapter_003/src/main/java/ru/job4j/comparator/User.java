@@ -1,5 +1,11 @@
 package ru.job4j.comparator;
 
+/**
+ * class User
+ * @author Vladimir Seregin (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 01.04.2019
+ */
 public class User implements Comparable<User> {
     private final String name;
     private int age;
@@ -17,7 +23,6 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-        final int result = this.age - o.age;
-        return result != 0 ? result : this.name.compareTo(o.name);
+        return this.age - o.age;
     }
 }
