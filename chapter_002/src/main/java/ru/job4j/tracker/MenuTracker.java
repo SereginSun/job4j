@@ -72,7 +72,7 @@ public class MenuTracker {
     /**
      * Метод выводит на экран меню.
      */
-    public void Show() {
+    public void show() {
         for (UserAction actions : this.actions) {
             if (actions != null) {
                 System.out.println(actions.info());
@@ -125,8 +125,8 @@ public class MenuTracker {
             String desc = input.ask("Пожалуйста, введите описание новой заявки:");
             Item item = new Item(name, desc);
             if (tracker.replace(id, item)) {
-                System.out.println("Заявка отредактирована. Новое имя заявки: " + item.getName() + " " +
-                        "Описание новой заявки: " + item.getDescription()
+                System.out.println("Заявка отредактирована. Новое имя заявки: " + item.getName() + " "
+                        + "Описание новой заявки: " + item.getDescription()
                 );
             } else {
                 System.out.println("Заявки с ID: " + id + " не существует.");

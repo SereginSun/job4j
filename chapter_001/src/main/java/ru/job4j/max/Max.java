@@ -11,7 +11,7 @@ public class Max {
      * @param second второе значение
      * @return максимальное значение
      */
-    public int max(int first, int second){
+    public int max(int first, int second) {
         return first < second ? second : first;
     }
     /**
@@ -20,7 +20,7 @@ public class Max {
      * @param second второе значение
      * @return сумма
      */
-    public int summation(int first, int second){
+    public int summation(int first, int second) {
         return first + second;
     }
     public int max(int first, int second, int third) {

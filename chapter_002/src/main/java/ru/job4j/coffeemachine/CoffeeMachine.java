@@ -18,7 +18,7 @@ public class CoffeeMachine {
      * @param price - цена кофе
      * @return массив монет
      */
-    public int[] changes (int value, int price) {
+    public int[] changes(int value, int price) {
         int change = value - price;
         int count = 0;
          for (int i = 0; i < 4;) {
@@ -27,15 +27,19 @@ public class CoffeeMachine {
                 //
                  // for (int j = 0; j < quotient; j++)
                  int j = 0;
-                 while (j < quotient){
+                 while (j < quotient) {
                      if (change - coins[i] >= 0) {
                          change -= coins[i];
                          smallChange[count] = coins[i];
                          count++;
-                     } else i++;
+                     } else {
+                         i++;
+                     }
                      j++;
                  }
-             } else i++;
+             } else {
+                 i++;
+             }
          }
         return Arrays.copyOf(smallChange, count);
     }

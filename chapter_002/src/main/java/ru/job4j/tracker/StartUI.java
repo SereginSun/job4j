@@ -79,7 +79,7 @@ public class StartUI {
             range.add(i);
         }
         do {
-            menu.Show();
+            menu.show();
             menu.select(input.ask("Введите пункт меню: ", range));
         } while (!"да".equals(this.input.ask("Выход? (да): ")));
     }

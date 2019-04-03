@@ -13,7 +13,7 @@ public class TrackerSingleStaticField extends TrackerSingleAbstract {
     }
 
     public static TrackerSingleStaticField getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new TrackerSingleStaticField();
         }
         return instance;

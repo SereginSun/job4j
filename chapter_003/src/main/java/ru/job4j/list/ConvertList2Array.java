@@ -18,7 +18,7 @@ public class ConvertList2Array {
      * @return two-dimensional array of int type.
      */
     public int[][] toArray(List<Integer> list, int rows) {
-        int cells = (int) Math.ceil(list.size()/(double)rows);
+        int cells = (int) Math.ceil(list.size() / (double) rows);
         int[][] array = new int[rows][cells];
         int i = 0;
         int j = 0;

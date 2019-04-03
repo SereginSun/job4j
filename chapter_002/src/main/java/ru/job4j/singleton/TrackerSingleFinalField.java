@@ -12,7 +12,7 @@ public class TrackerSingleFinalField extends TrackerSingleAbstract {
     private TrackerSingleFinalField() {
     }
 
-    public static TrackerSingleFinalField getInstance(){
+    public static TrackerSingleFinalField getInstance() {
         return INSTANCE;
     }
 }

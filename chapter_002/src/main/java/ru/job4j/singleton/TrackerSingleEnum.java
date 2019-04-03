@@ -3,6 +3,7 @@ package ru.job4j.singleton;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public enum  TrackerSingleEnum implements TrackerSingleInterface {
 
     @Override
     public List<Item> findAll() {
-        return (List<Item>) this.tracker.findAll().get(0);
+        return Collections.singletonList(this.tracker.findAll().get(0));
     }
 
     @Override

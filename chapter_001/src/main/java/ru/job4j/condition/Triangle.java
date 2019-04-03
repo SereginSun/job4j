@@ -33,10 +33,10 @@ public class Triangle {
         double result = -1;
         double ab = this.a.distanceTo(this.b);
         double ac = this.a.distanceTo(this.c);
-        double bc = this.b.distanceTo(this.c );
+        double bc = this.b.distanceTo(this.c);
         double p = this.period(ab, ac, bc);
         if (this.exist(ab, bc, ac)) {
-            result = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc)) ;
+            result = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
         }
         return result;
     }

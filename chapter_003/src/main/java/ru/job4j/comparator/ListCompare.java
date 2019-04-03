@@ -27,6 +27,6 @@ public class ListCompare implements Comparator<String> {
                 break;
             }
         }
-        return result !=0 || left.length() == right.length() ? result : Integer.compare(left.length(), right.length());
+        return result != 0 || left.length() == right.length() ? result : Integer.compare(left.length(), right.length());
     }
 }

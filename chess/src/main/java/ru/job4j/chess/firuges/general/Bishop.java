@@ -32,7 +32,7 @@ public abstract class Bishop implements Figure {
         Cell[] steps = new Cell[size];
         int deltaX = source.x < dest.x ? 1 : -1;
         int deltaY = source.y > dest.y ? -1 : 1;
-        for(int index = 0; index != size; index++) {
+        for (int index = 0; index != size; index++) {
             steps[index] = Cell.values()[(source.x + deltaX * (index + 1)) * 8 + (source.y + deltaY * (index + 1))];
         }
         return steps;

@@ -18,7 +18,7 @@ public class Board {
         String line = System.getProperty("line.separator");
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < weight; j++) {
-                if ((i+j) % 2 == 0) {
+                if ((i + j) % 2 == 0) {
                     screen.append("X");
                 } else {
                     screen.append(" ");
