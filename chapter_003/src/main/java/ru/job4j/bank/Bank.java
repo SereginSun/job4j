@@ -82,10 +82,11 @@ public class Bank {
         boolean result = false;
         Account accountSrc = getAccountByRequisite(getUserByPassport(srcPassport), srcRequisite);
         Account accountDest = getAccountByRequisite(getUserByPassport(destPassport), destRequisite);
-        if (accountSrc != null && accountDest != null && accountSrc.getValue() >= amount);
-        accountSrc.setValue(accountSrc.getValue() - amount);
-        accountDest.setValue(accountDest.getValue() + amount);
-        result = true;
+        if (accountSrc != null && accountDest != null && accountSrc.getValue() >= amount) {
+            accountSrc.setValue(accountSrc.getValue() - amount);
+            accountDest.setValue(accountDest.getValue() + amount);
+            result = true;
+        }
         return result;
     }
 

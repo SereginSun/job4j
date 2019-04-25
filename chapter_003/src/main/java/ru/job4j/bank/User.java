@@ -25,7 +25,7 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        return (o != null && getClass() == o.getClass() && this.passport.equals(((User)o).passport));
+        return (o != null && getClass() == o.getClass() && this.passport.equals(((User) o).passport));
     }
 
     @Override
