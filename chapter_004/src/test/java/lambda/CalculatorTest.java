@@ -14,7 +14,7 @@ public class CalculatorTest {
     public void whenAdd1Until3() {
         Calculator calc = new Calculator();
         List<Double> buffer = new ArrayList<>();
-        calc.multiple(0,3,1,
+        calc.multiple(0, 3, 1,
                 (value, index) -> (double) value * index,
                 result -> buffer.add(result)
         );
