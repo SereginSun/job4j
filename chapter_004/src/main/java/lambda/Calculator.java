@@ -1,31 +1,29 @@
 package lambda;
 
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
+/**
+ * class Calculator
+ * @author Vladimir Seregin (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 30.04.2019
+ */
 public class Calculator {
 
     /**
-     * This interface describes a function that takes two parameters left, right
-     * and returns a value of type double.
+     * The method calculates mathematical functions in a diapason.
+     * @param start - the initial value of the diapason (inclusive).
+     * @param end - diapason end value.
+     * @param func - Mathematical function for calculation.
+     * @return List of values of calculated function.
      */
-    public interface Operation {
-        double calc(int left, int right);
-    }
-
-    public void multiple(int start, int finish, int value,
-                         BiFunction<Integer, Integer, Double> op,
-                         Consumer<Double> media) {
-        for (int index = start; index != finish; index++) {
-            media.accept(op.apply(value, index));
+    List<Double> diapason(int start, int end, Function<Double, Double> func) {
+        List<Double> result = new ArrayList<>();
+        for (int index = start; index != end; index++) {
+            result.add(func.apply((double) index));
         }
-    }
-
-    public static void main(String[] args) {
-        Calculator calc = new Calculator();
-        calc.multiple(0, 10, 2,
-                MathUtil::add,
-                result -> System.out.println(result)
-        );
+        return result;
     }
 }

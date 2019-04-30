@@ -2,34 +2,41 @@ package lambda;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
+/**
+ * class CalculatorTest
+ * @author Vladimir Seregin (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 30.04.2019
+ */
 public class CalculatorTest {
     @Test
-    public void whenAdd1Until3() {
+    public void whenLinearFunctionThenLinearResults() {
         Calculator calc = new Calculator();
-        List<Double> buffer = new ArrayList<>();
-        calc.multiple(0, 3, 1,
-                (value, index) -> (double) value * index,
-                result -> buffer.add(result)
-        );
-        assertThat(buffer, is(Arrays.asList(0D, 1D, 2D)));
+        List<Double> result = calc.diapason(5, 8, x -> 2 * x + 1);
+        List<Double> expected = Arrays.asList(11D, 13D, 15D);
+        assertThat(result, is(expected));
     }
 
     @Test
-    public void whenAdd1Util4() {
+    public void whenQuadraticFunctionThenQuadraticResults() {
         Calculator calc = new Calculator();
-        List<Double> buffer = new ArrayList<>();
-        calc.multiple(0, 4, 1,
-                MathUtil::add, // static call
-                buffer::add //non-static call
-                );
-        assertThat(buffer, is(Arrays.asList(1D, 2D, 3D, 4D)));
+        List<Double> result = calc.diapason(1, 4, x -> Math.pow(x, 2) + 1);
+        List<Double> expected = Arrays.asList(2D, 5D, 10D);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenLogarithmicFunctionThenLogarithmicResults() {
+        Calculator calc = new Calculator();
+        List<Double> result = calc.diapason(4, 7, Math::log);
+        List<Double> expected = Arrays.asList(1.3862943611198906D, 1.6094379124341003D, 1.791759469228055D);
+        assertThat(result, is(expected));
     }
 
 }
