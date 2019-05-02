@@ -9,13 +9,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 public class StartUITest {
-    private final PrintStream stdout = System.out;
+
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final Consumer<String> output = new Consumer<String>() {
+        private final PrintStream stdout = new PrintStream(out);
+        @Override
+        public void accept(String s) {
+            stdout.println(s);
+        }
+    };
     private final String menu = new StringBuilder()
             //.append("Меню.")
             //.append(System.lineSeparator())
@@ -43,7 +51,7 @@ public class StartUITest {
 
     @After
     public void backOutput() {
-        System.setOut(this.stdout);
+        System.setOut(new PrintStream(this.out));
         System.out.println("execute after method");
     }
 
@@ -51,7 +59,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[] {"0", "test name", "desc", "да"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new     StringBuilder()
@@ -69,7 +77,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(new String[] {"2", item.getId(), "test replace", "заменили заявку", "да"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
@@ -89,7 +97,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test123", "desc", 123L));
         Item item3 = tracker.add(new Item("test name3", "desc", 123L));
         Input input = new StubInput(new String[]{"3", item2.getId(), "да"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(new String(out.toByteArray()),
                 is(
                         new StringBuilder()
@@ -107,7 +115,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("Test name", "description", 123L));
         Input input = new StubInput(new String[]{"4", item.getId(), "да"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findById(item.getId()).getName(), is("Test name"));
     }
 
@@ -117,7 +125,7 @@ public class StartUITest {
         Item first = tracker.add(new Item("Test name", "description", 123L));
         Item second = tracker.add(new Item("Test name", "description_1", 123L));
         Input input = new StubInput(new String[]{"5", "Test name", "да"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         List<Item> expected = new ArrayList<>();
         expected.add(first);
         expected.add(second);
