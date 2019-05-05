@@ -1,4 +1,4 @@
-package stream;
+package ru.job4j.stream;
 
 /**
  * Package for:
