@@ -29,4 +29,23 @@ public class ProfileTest {
         List<Address> result = new Profile().collect(profileList);
         assertThat(result, is(expected));
     }
+
+    @Test
+    public void whenGetUniqueAddressListFromProfileList() {
+        Address firstAddress = new Address("Moscow", "3rd Street Stroiteley", 25, 12);
+        Address secondAddress = new Address("Rostov-on-don", "Zoological", 26, 3);
+        Address thirdAddress = new Address("Voronezh", "Koltsovskaya", 35, 101);
+        Address fourthAddress = new Address("Moscow", "3rd Street Stroiteley", 25, 12);
+        Address fifthAddress = new Address("Rostov-on-don", "Zoological", 26, 3);
+        List<Profile> profileList = Arrays.asList(
+                new Profile(firstAddress),
+                new Profile(secondAddress),
+                new Profile(thirdAddress),
+                new Profile(fourthAddress),
+                new Profile(fifthAddress)
+        );
+        List<Address> expected = Arrays.asList(firstAddress, secondAddress, thirdAddress);
+        List<Address> result = new Profile().unique(profileList);
+        assertThat(result, is(expected));
+    }
 }
