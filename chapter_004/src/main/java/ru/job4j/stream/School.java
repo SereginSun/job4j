@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -20,5 +21,17 @@ public class School {
      */
     List<Student> collect(List<Student> student, Predicate<Student> predicate) {
         return student.stream().filter(predicate).collect(Collectors.toList());
+    }
+
+    /**
+     * This method convert students List to Map.
+     *
+     * @param students - List of students.
+     * @return Map of students.
+     */
+    public Map<String, Student> convertListToMap(List<Student> students) {
+        return students.stream()
+                .distinct()
+                .collect(Collectors.toMap(Student::getLastName, student -> student));
     }
 }
