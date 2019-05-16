@@ -1,6 +1,9 @@
 package ru.job4j.bank;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * class Bank
@@ -33,14 +36,7 @@ public class Bank {
      * @param account A new account of user.
      */
     public void addAccountToUser(String passport, Account account) {
-        List<Account> listAccounts = this.userAccounts.putIfAbsent(
-                this.getUserByPassport(passport), new ArrayList<>(Arrays.asList(account))
-        );
-        if (listAccounts != null) {
-            listAccounts.add(account);
-            userAccounts.put(getUserByPassport(passport), listAccounts);
-        }
-
+        this.userAccounts.get(getUserByPassport(passport)).add(account);
     }
 
     /**
@@ -49,13 +45,7 @@ public class Bank {
      * @param account A new account of user.
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        List<Account> listAccounts = this.userAccounts.get(this.getUserByPassport(passport));
-        for (int index = 0; index < listAccounts.size(); index++) {
-            if (listAccounts.get(index).getRequisites().equals(account.getRequisites())) {
-                listAccounts.remove(listAccounts.get(index));
-                break;
-            }
-        }
+        this.userAccounts.get(getUserByPassport(passport)).remove(account);
     }
 
     /**
@@ -92,18 +82,12 @@ public class Bank {
 
     /**
      * The method finds a user by their passport data.
-     * @param passport Passpert data of user.
+     * @param passport Passport data of user.
      * @return Object of user.
      */
     public User getUserByPassport(String passport) {
-        User user = null;
-        for (Map.Entry<User, List<Account>> client : userAccounts.entrySet()) {
-            if (client.getKey().getPassport().equals(passport)) {
-                user = client.getKey();
-                break;
-            }
-        }
-        return user;
+        return this.userAccounts.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport)).findFirst().orElse(null);
     }
 
     /**
@@ -113,17 +97,13 @@ public class Bank {
      * @return An Object of User's banking Account.
      */
     private Account getAccountByRequisite(User user, String requisite) {
-        Account result = null;
-        for (Account account : this.userAccounts.get(user)) {
-            if (account.getRequisites().equals(requisite)) {
-                result = account;
-            }
-        }
-        return result;
+        return this.userAccounts.get(user).stream()
+                .filter(account -> account.getRequisites().equals(requisite))
+                .findFirst().orElse(null);
     }
 
     @Override
     public String toString() {
-        return "Bank{" + "accouns=" + userAccounts + "}";
+        return "Bank{" + "accounts=" + userAccounts + "}";
     }
 }
