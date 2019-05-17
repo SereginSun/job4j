@@ -1,9 +1,7 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * class Bank
@@ -19,7 +17,7 @@ public class Bank {
      * @param user A user object.
      */
     public void addUser(User user) {
-        this.userAccounts.put(user, new ArrayList<>());
+        this.userAccounts.putIfAbsent(user, new ArrayList<>());
     }
 
     /**
@@ -36,7 +34,9 @@ public class Bank {
      * @param account A new account of user.
      */
     public void addAccountToUser(String passport, Account account) {
-        this.userAccounts.get(getUserByPassport(passport)).add(account);
+        if (!Objects.isNull(getUserByPassport(passport))) {
+            this.userAccounts.get(getUserByPassport(passport)).add(account);
+        }
     }
 
     /**
@@ -45,7 +45,9 @@ public class Bank {
      * @param account A new account of user.
      */
     public void deleteAccountFromUser(String passport, Account account) {
-        this.userAccounts.get(getUserByPassport(passport)).remove(account);
+        if (!Objects.isNull(getUserByPassport(passport))) {
+            this.userAccounts.get(getUserByPassport(passport)).remove(account);
+        }
     }
 
     /**
@@ -54,7 +56,11 @@ public class Bank {
      * @return List of all banking accounts of the User.
      */
     public List<Account> getUserAccounts(String passport) {
-        return this.userAccounts.get(this.getUserByPassport(passport));
+        return this.userAccounts.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport))
+                .map(this.userAccounts::get)
+                .flatMap(accounts -> accounts.stream())
+                .collect(Collectors.toList());
     }
 
     /**
