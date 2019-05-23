@@ -1,5 +1,6 @@
 package ru.job4j.students;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,10 +22,10 @@ public class School {
      * @return List of students who have a score higher than the boundary value.
      */
     public List<Student> levelOf(List<Student> students, int bound) {
-        return students.stream()
-                .sorted()
-                .flatMap(Stream::ofNullable)
-                .takeWhile(student -> student.getScore() > bound)
-                .collect(Collectors.toList());
+            return students.stream()
+                    .sorted(Comparator.nullsLast(Comparator.comparing(Student::getScore).reversed()))
+                    .flatMap(Stream::ofNullable)
+                    .takeWhile(student -> student.getScore() > bound)
+                    .collect(Collectors.toList());
     }
 }

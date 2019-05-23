@@ -19,10 +19,6 @@ public class Student implements Comparable<Student> {
         this.score = score;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getScore() {
         return score;
     }
