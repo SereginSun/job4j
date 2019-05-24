@@ -2,6 +2,7 @@ package ru.job4j.students;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -17,7 +18,7 @@ public class SchoolTest {
     @Test
     public void whenScoreMoreBoundReturnSortedListOfStudent() {
             School secondarySchool = new School();
-            List<Student> students = List.of(
+            List<Student> students = Arrays.asList(
                     new Student("Bezborodov", 85),
                     null,
                     new Student("Abramovich", 52),

@@ -21,7 +21,7 @@ public class School {
         if (o1 == null || o2 == null) {
             return o1 == null ? 1 : -1;
         }
-        return Integer.compare(o1.getScore(), o2.getScore());
+        return Integer.compare(o2.getScore(), o1.getScore());
     };
 
     /**
@@ -33,7 +33,6 @@ public class School {
      */
     public List<Student> levelOf(List<Student> students, int bound) {
             return students.stream()
-//                    .sorted(Comparator.nullsLast(Comparator.comparing(Student::getScore).reversed()))
                     .sorted(comp)
                     .flatMap(Stream::ofNullable)
                     .takeWhile(student -> student.getScore() > bound)
