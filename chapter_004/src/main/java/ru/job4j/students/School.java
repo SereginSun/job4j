@@ -14,6 +14,16 @@ import java.util.stream.Stream;
  */
 public class School {
 
+    private final Comparator<Student> comp = (o1, o2) -> {
+        if (o1 == null && o2 == null) {
+            return 0;
+        }
+        if (o1 == null || o2 == null) {
+            return o1 == null ? 1 : -1;
+        }
+        return Integer.compare(o1.getScore(), o2.getScore());
+    };
+
     /**
      * Selection of students for their score, excluding null entries in the List.
      *
@@ -23,7 +33,8 @@ public class School {
      */
     public List<Student> levelOf(List<Student> students, int bound) {
             return students.stream()
-                    .sorted(Comparator.nullsLast(Comparator.comparing(Student::getScore).reversed()))
+//                    .sorted(Comparator.nullsLast(Comparator.comparing(Student::getScore).reversed()))
+                    .sorted(comp)
                     .flatMap(Stream::ofNullable)
                     .takeWhile(student -> student.getScore() > bound)
                     .collect(Collectors.toList());
