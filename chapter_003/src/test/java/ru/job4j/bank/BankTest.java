@@ -46,7 +46,7 @@ public class BankTest {
         result.add(sberBank.getUserByPassport("20 05 558346"));
         result.add(sberBank.getUserByPassport("37 05 033791"));
         result.add(sberBank.getUserByPassport("45 07 691152"));
-        assertThat(result, is(new HashSet<>(Arrays.asList(firstUser, secondUser, thirdUser))));
+        assertThat(result, is(new HashSet<>(List.of(firstUser, secondUser, thirdUser))));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BankTest {
         Set<User> result = new HashSet<>();
         result.add(sberBank.getUserByPassport("20 05 558346"));
         result.add(sberBank.getUserByPassport("45 07 691152"));
-        assertThat(result, is(new HashSet<>(Arrays.asList(firstUser, thirdUser))));
+        assertThat(result, is(new HashSet<>(List.of(firstUser, thirdUser))));
     }
 
     @Test
