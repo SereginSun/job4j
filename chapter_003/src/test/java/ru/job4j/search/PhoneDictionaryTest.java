@@ -2,10 +2,8 @@ package ru.job4j.search;
 
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Test for class PhoneDictionary
@@ -16,17 +14,17 @@ import static org.junit.Assert.*;
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(new Person("Vladimir", "Seregin", "2770789", "Voronezh"));
-        List<Person> persons = phones.find("Vlad");
+        var persons = phones.find("Vlad");
         assertThat(persons.iterator().next().getSurname(), is("Seregin"));
     }
 
     @Test
     public void whenFindByAddress() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(new Person("Kirill", "Kovnin", "2422081", "Podolsk"));
-        List<Person> persons = phones.find("Pod");
+        var persons = phones.find("Pod");
         assertThat(persons.iterator().next().getSurname(), is("Kovnin"));
     }
 }

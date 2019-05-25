@@ -18,8 +18,8 @@ public class PriorityQueue {
      * @param task task in the list
      */
     public void put(Task task) {
-        int count = 0;
-        for (Task index : this.tasks) {
+        var count = 0;
+        for (var index : this.tasks) {
             if (task.getPriority() < index.getPriority()) {
                 break;
             }
