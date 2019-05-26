@@ -49,8 +49,8 @@ public class Logic3T {
      * since we have two events: a check for a cross and a zero.
      * @return true - there is a winning combination, else false.
      */
-    public boolean isWinner (Predicate<Figure3T> predicate) {
-        return this.fillBy(predicate, 0, 0 , 0, 1)
+    public boolean isWinner(Predicate<Figure3T> predicate) {
+        return this.fillBy(predicate, 0, 0, 0, 1)
                 || this.fillBy(predicate, 1, 0, 0, 1)
                 || this.fillBy(predicate, this.table.length - 1, 0, 0, 1)
                 || this.fillBy(predicate, 0, 0, 1, 0)
