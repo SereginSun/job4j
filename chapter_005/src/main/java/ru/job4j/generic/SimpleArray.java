@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * @version $Id$
  * @since 06.06.2019
  */
-public class SimpleArray<T> implements Iterable<T>{
+public class SimpleArray<T> implements Iterable<T> {
 
     private T[] models;
     private int index = 0;
