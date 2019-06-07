@@ -56,7 +56,7 @@ public class SimpleArrayTest {
 
     @Test
     public void whenSequentialInvocation() {
-        SimpleArray<Integer> simple = new SimpleArray<>(3);
+        SimpleArray<Integer> simple = new SimpleArray<>(5);
         simple.add(0);
         simple.add(1);
         simple.add(2);

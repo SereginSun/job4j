@@ -13,21 +13,21 @@ import java.util.NoSuchElementException;
 public class SimpleArray<T> implements Iterable<T> {
 
     private T[] models;
-    private int index = 0;
+    private int position = 0;
 
     public SimpleArray(int size) {
         this.models = (T[]) new Object[size];
     }
 
     public void add(T model) {
-        if (this.index >= models.length) {
+        if (this.position >= models.length) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        this.models[index++] = model;
+        this.models[position++] = model;
     }
 
     public void set(int index, T model) {
-        if (this.index > models.length) {
+        if (index > this.position) {
             throw new ArrayIndexOutOfBoundsException();
         }
         this.models[index] = model;
@@ -35,7 +35,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     public void remove(int index) {
         System.arraycopy(this.models, index + 1, this.models, index, this.models.length - index - 1);
-        this.index--;
+        this.position--;
     }
 
     public T get(int index) {
@@ -45,11 +45,11 @@ public class SimpleArray<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            private int index = 0;
+            private int count = 0;
 
             @Override
             public boolean hasNext() {
-                return this.index < models.length;
+                return count < position;
             }
 
             @Override
@@ -57,7 +57,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return models[index++];
+                return models[count++];
             }
         };
     }
