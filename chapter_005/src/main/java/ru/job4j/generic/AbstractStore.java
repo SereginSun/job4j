@@ -7,7 +7,8 @@ package ru.job4j.generic;
  * @version $Id$
  * @since 07.06.2019
  */
-public class AbstractStore<T extends Base> implements Store<T> {private SimpleArray<T> array;
+public class AbstractStore<T extends Base> implements Store<T> {
+    private SimpleArray<T> array;
 
     protected AbstractStore(int size) {
         this.array = new SimpleArray<>(size);
