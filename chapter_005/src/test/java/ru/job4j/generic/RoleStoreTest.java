@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  * @since 07.06.2019
  */
 public class RoleStoreTest {
-    private final RoleStore<Role> roleStore = new RoleStore<>(10);
+    private final RoleStore roleStore = new RoleStore(10);
 
     @Before
     public void init() {

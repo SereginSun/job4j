@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
  * @since 07.06.2019
  */
 public class UserStoreTest {
-    private final UserStore<User> userStore = new UserStore<>(10);
+    private final UserStore userStore = new UserStore(10);
 
     @Before
     public void init() {
