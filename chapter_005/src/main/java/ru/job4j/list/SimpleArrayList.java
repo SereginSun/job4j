@@ -37,7 +37,7 @@ public class SimpleArrayList<E> {
             this.size--;
             result.next = null;
         }
-        return null;
+        return result.data;
     }
 
     /**
