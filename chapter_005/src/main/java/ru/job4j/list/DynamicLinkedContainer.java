@@ -1,29 +1,27 @@
 package ru.job4j.list;
 
-import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * class Dynamic array based.
+ * class DynamicLinkedContainer, based on linked list.
  *
- * @author Seregin Vladimir (SereginSun@yandex.ru)
+ * @author Seregin Vladimir (SereginSun@yandex.ru).
  * @version $Id$
  * @since 12.06.2019
  */
-public class DynamicList<E> implements Iterable<E> {
+public class DynamicLinkedContainer<E> implements Iterable<E> {
 
-    private Object[] container;
-    private static final int DEFAULT_SIZE = 5;
+    private Node<E> node;
     private int position;
     private int modCount;
 
     /**
-     * Constructs an empty list with the specified initial capacity.
+     * Constructs an empty list.
      */
-    public DynamicList() {
-        this.container = new Object[DEFAULT_SIZE];
+    public DynamicLinkedContainer() {
+        this.node = null;
         this.position = 0;
         this.modCount = 0;
     }
@@ -34,44 +32,39 @@ public class DynamicList<E> implements Iterable<E> {
      * @param value - value added to container.
      */
     public void add(E value) {
-        modCount++;
-        grow();
-        this.container[position++] = value;
+        Node<E> newLink = new Node<>(value);
+        newLink.next = this.node;
+        this.node = newLink;
+        this.modCount++;
+        this.position++;
     }
 
     /**
      * This method returns an array element by his index.
      *
      * @param index - index of element.
-     * @return array element at index
+     * @return array element at index.
      */
     public E get(int index) {
-        if (index >= this.position) {
-            throw new NoSuchElementException();
+        if (index > this.position) {
+            throw new IndexOutOfBoundsException();
         }
-        return (E) this.container[index];
+        Node<E> result = this.node;
+        for (int i = 0; i < index; i++) {
+            result = result.next;
+        }
+        return result.data;
     }
 
     /**
-     * This method increases the capacity of the container.
+     * Returns an iterator for the elements in this list in proper sequence.
+     * The returned iterator is fail-fast.
+     *
+     * @return an iterator object.
      */
-    public void grow() {
-        if (this.position >= this.container.length) {
-            this.container = Arrays.copyOf(this.container, this.container.length * 2);
-        }
-    }
-
-    /**
-     * This method returns the size of the container.
-     * @return the size of the container.
-     */
-    public int size() {
-        return this.container.length;
-    }
-
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>() {
+        return new Iterator<>() {
             private int iterCount = modCount;
             private int index = 0;
 
@@ -88,8 +81,23 @@ public class DynamicList<E> implements Iterable<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return (E) container[index++];
+                return get(index++);
             }
         };
+    }
+
+    /**
+     * Data storage class
+     *
+     * @param <E> - a reference type of data value
+     */
+    private static class Node<E> {
+
+        E data;
+        Node<E> next;
+
+        public Node(E data) {
+            this.data = data;
+        }
     }
 }
