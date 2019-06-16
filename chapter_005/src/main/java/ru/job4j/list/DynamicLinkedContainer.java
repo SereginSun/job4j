@@ -65,15 +65,15 @@ public class DynamicLinkedContainer<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
+            private Node<E> iterNode = node;
             private int iterCount = modCount;
-            private int index = 0;
 
             @Override
             public boolean hasNext() {
                 if (iterCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return index < position;
+                return iterNode != null;
             }
 
             @Override
@@ -81,7 +81,9 @@ public class DynamicLinkedContainer<E> implements Iterable<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return get(index++);
+                E result = iterNode.data;
+                iterNode = iterNode.next;
+                return result;
             }
         };
     }
