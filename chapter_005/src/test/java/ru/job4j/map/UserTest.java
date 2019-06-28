@@ -6,9 +6,6 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
 /**
  * class UserTest.
  *
@@ -25,6 +22,6 @@ public class UserTest {
         Map<User, Object> map = new HashMap<>();
         map.put(first, "first son");
         map.put(second, "second son");
-        assertThat(first.equals(second), is(false));
+        System.out.println(map);
     }
 }
