@@ -12,6 +12,7 @@ import java.util.*;
  */
 public class SimpleMap<K, V> implements Iterable{
     private Node<K, V>[] hashTable;
+    private int modCount;
     private int size;
     private float threshold;
 
@@ -22,6 +23,7 @@ public class SimpleMap<K, V> implements Iterable{
     public SimpleMap() {
         this.hashTable = new Node[16];
         this.size = 0;
+        this.modCount = 0;
         this.threshold = hashTable.length * 0.75f;
     }
 
@@ -67,6 +69,7 @@ public class SimpleMap<K, V> implements Iterable{
         hashTable[index] = new Node<>(null, null);
         hashTable[index].getNodes().add(newNode);
         size++;
+        modCount++;
         return true;
     }
 
@@ -84,6 +87,7 @@ public class SimpleMap<K, V> implements Iterable{
                                         final V value) {
         if (newNode.getKey().equals(nodeFromList.getKey()) && !newNode.getValue().equals(nodeFromList.getValue())) {
             nodeFromList.setValue(value);
+            modCount++;
             return true;
         }
         return false;
@@ -122,11 +126,12 @@ public class SimpleMap<K, V> implements Iterable{
                                         final Node<K, V> newNode,
                                         final List<Node<K, V>> nodes) {
 
-        if (newNode.getNodes().hashCode() == nodeFromList.getNodes().hashCode()
+        if (newNode.hash == nodeFromList.hash
                 && !Objects.equals(newNode.key, nodeFromList.key)
                 && !Objects.equals(newNode.getValue(), nodeFromList.getValue())) {
             nodes.add(newNode);
             size++;
+            modCount++;
             return true;
         }
         return false;
@@ -144,7 +149,7 @@ public class SimpleMap<K, V> implements Iterable{
 
         if (index < hashTable.length && hashTable[index] != null) {
 
-            if (hashTable[index].getNodes().size() == 1) {
+            if (hashTable[index].getNodes().size() == 1 && key.equals(hashTable[index].getKey())) {
                 return hashTable[index].getNodes().get(0).getValue();
             }
 
@@ -171,9 +176,10 @@ public class SimpleMap<K, V> implements Iterable{
             return false;
         }
 
-        if (hashTable[index].getNodes().size() == 1) {
+        if (hashTable[index].getNodes().size() == 1 && key.equals(hashTable[index].getKey())) {
             hashTable[index] = null;
             size--;
+            modCount++;
             return true;
         }
 
@@ -182,6 +188,7 @@ public class SimpleMap<K, V> implements Iterable{
             if (key.equals(node.key)) {
                 nodeList.remove(node);
                 size--;
+                modCount++;
                 return true;
             }
         }
@@ -220,12 +227,16 @@ public class SimpleMap<K, V> implements Iterable{
     @Override
     public Iterator<V> iterator() {
         return new Iterator<>() {
+            private int expectedModCount = modCount;
             private int counterBasket = 0;
             private int valuesCounter = 0;
             Iterator<Node<K, V>> nodeIterator = null;
 
             @Override
             public boolean hasNext() {
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
                 if (valuesCounter == size) {
                     return false;
                 }
@@ -249,6 +260,9 @@ public class SimpleMap<K, V> implements Iterable{
 
             @Override
             public V next() {
+                if (!hasNext()) {
+                    throw new ConcurrentModificationException();
+                }
                 valuesCounter++;
                 return nodeIterator.next().getValue();
             }
@@ -263,6 +277,7 @@ public class SimpleMap<K, V> implements Iterable{
      */
     public class Node<K, V> {
         private List<Node<K, V>> nodes;
+        private int hash;
         private K key;
         private V value;
 
