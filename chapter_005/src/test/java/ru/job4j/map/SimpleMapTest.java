@@ -27,7 +27,7 @@ public class SimpleMapTest {
     }
 
     @Test
-    public void AddPairThanGetNewValue() {
+    public void whenAddPairThanGetNewValue() {
         map.insert("fourth", "four");
         assertThat(map.get("fourth"), is("four"));
     }

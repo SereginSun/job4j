@@ -10,7 +10,7 @@ import java.util.*;
  * @since 06.07.2019
  *
  */
-public class SimpleMap<K, V> implements Iterable{
+public class SimpleMap<K, V> implements Iterable {
     private Node<K, V>[] hashTable;
     private int modCount;
     private int size;
