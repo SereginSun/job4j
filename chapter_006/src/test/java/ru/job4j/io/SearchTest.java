@@ -21,7 +21,7 @@ public class SearchTest {
     private Search testSearch = new Search();
     private final File root = new File(System.getProperty("java.io.tmpdir") + "/root");
     private File firstFolder = new File(root,  "/firstFolder");
-    private File secondFolder = new File(root , "/secondFolder");
+    private File secondFolder = new File(root, "/secondFolder");
     private File thirdFolder = new File(root, "/thirdFolder");
     private File fourthFolder = new File(secondFolder,  "/fourthFolder");
     private File fifthFolder = new File(secondFolder,  "/fifthFolder");
