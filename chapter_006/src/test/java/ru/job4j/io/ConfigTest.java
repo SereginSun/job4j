@@ -16,7 +16,7 @@ public class ConfigTest {
 
     @Test
     public void whenLoadFileThenKeyReturnValue() {
-        Config testConfig = new Config("C:\\projects\\job4j\\app.properties");
+        Config testConfig = new Config(Config.class.getClassLoader().getResource("app.properties").getFile());
         testConfig.load();
         assertThat(testConfig.value("hibernate.dialect"), is("org.hibernate.dialect.PostgreSQLDialect"));
         assertThat(testConfig.value("hibernate.connection.url"), is("jdbc:posgresql://127.0.0.1:5432/trackstudio"));
