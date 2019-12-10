@@ -10,7 +10,7 @@ import java.util.Random;
  * @version 1.0.1
  * @since 06.12.2018
  */
-public class Tracker {
+public class Tracker implements ITracker {
 
     /**
      * Массив для хранение заявок.

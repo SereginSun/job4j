@@ -15,6 +15,8 @@ public class Item {
     private String[] comment;
 
     public Item(String name, String desc) {
+        this.name = name;
+        this.description = desc;
     }
 
     public Item(String name, String description, long create) {

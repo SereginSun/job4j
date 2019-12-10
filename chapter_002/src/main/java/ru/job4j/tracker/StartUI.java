@@ -56,7 +56,7 @@ public class StartUI {
     /**
      * хранилище заявок
      */
-    private final Tracker tracker;
+    private final ITracker tracker;
 
     /**
      * функциональный интерфейс Consumer.
@@ -68,7 +68,7 @@ public class StartUI {
      * @param input;
      * @param tracker хранилище заявок
      */
-    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
+    public StartUI(Input input, ITracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
