@@ -3,11 +3,9 @@ package ru.job4j.tracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 /**
  * class TrackerSQL that upgrades the class Tracker from the chapter_002
@@ -19,28 +17,11 @@ import java.util.Properties;
 
 public class TrackerSQL implements ITracker, AutoCloseable {
 
-    private Connection connection;
+    private final Connection connection;
     private static final Logger LOG = LogManager.getLogger(TrackerSQL.class.getName());
 
-    public boolean init() {
-        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
-            Properties config = new Properties();
-            config.load(in);
-            Class.forName(config.getProperty("driver-class-name"));
-                connection = DriverManager.getConnection(
-                    config.getProperty("url"),
-                    config.getProperty("username"),
-                    config.getProperty("password")
-            );
-            Statement st = connection.createStatement();
-            st.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS items(id serial PRIMARY KEY, name VARCHAR(100) NOT NULL , description VARCHAR(200) NOT NULL);"
-            );
-            st.close();
-        } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
-        }
-        return this.connection != null;
+    public TrackerSQL(Connection connection) {
+        this.connection = connection;
     }
 
     @Override

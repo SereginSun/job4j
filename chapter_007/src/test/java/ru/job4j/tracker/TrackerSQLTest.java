@@ -1,10 +1,13 @@
 package ru.job4j.tracker;
 
-import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Properties;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -16,69 +19,95 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 10.12.2019
  */
-
-
 public class TrackerSQLTest {
 
-    private TrackerSQL sql;
     private List<Item> result;
 
-    @Before
-    public void setUp() {
-        sql = new TrackerSQL();
-        sql.init();
+    public Connection init() {
+        try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
+            Properties config = new Properties();
+            config.load(in);
+            Class.forName(config.getProperty("driver-class-name"));
+            return DriverManager.getConnection(
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
+            );
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
     }
 
     @Test
-    public void checkConnection() {
-        assertThat(sql.init(), is(true));
+    public void createItem() throws SQLException {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            tracker.add(new Item("testNameFirst", "teatDescriptionFirst"));
+            assertThat(tracker.findByName("testNameFirst").size(), is(1));
+        }
     }
 
-    @Ignore
     @Test
-    public void whenAddItem() {
-        Item first = new Item("testNameFirst", "teatDescriptionFirst");
-        sql.add(first);
-        assertThat(sql.findById(first.getId()).getName(), is("testNameFirst"));
+    public void whenAddItem() throws SQLException {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            tracker.add(second);
+            assertThat(tracker.findById(second.getId()).getName(), is("testNameSecond"));
+        }
     }
 
-    @Ignore
     @Test
-    public void whenReplaceNameOfItem() {
-        Item second = new Item("testNameSecond", "testDescriptionSecond");
-        Item third = new Item("testNameThird", "testDescriptionThird");
-        sql.add(second);
-        sql.replace(second.getId(), third);
-        assertThat(sql.findById(second.getId()).getName(), is("testNameThird"));
+    public void whenReplaceNameOfItem() throws SQLException {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            Item third = new Item("testNameThird", "testDescriptionThird");
+            tracker.add(second);
+            tracker.replace(second.getId(), third);
+            assertThat(tracker.findById(second.getId()).getName(), is("testNameThird"));
+        }
     }
 
-    @Ignore
     @Test
-    public void whenFindAllItem() {
-        Item fourth = new Item("testNameFourth", "testDescriptionFourth");
-        Item fifth = new Item("testNameFifth", "teatDescriptionFifth");
-        sql.add(fourth);
-        sql.add(fifth);
-        result = sql.findAll();
-        assertThat(result.get(0).getDescription(), is("testDescriptionSixth"));
+    public void whenDeleteNameOfItem() throws SQLException {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            tracker.add(second);
+            tracker.delete(second.getId());
+            assertThat(tracker.findByName(second.getId()).size(), is(0));
+        }
     }
 
-    @Ignore
     @Test
-    public void whenFindItemByName() {
-        Item sixth = new Item("testNameSixth", "testDescriptionSixth");
-        sql.add(sixth);
-        result = sql.findByName("testNameSixth");
-        assertThat(result.get(0).getDescription(), is("testDescriptionSixth"));
+    public void whenFindAllItem() throws SQLException  {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            Item third = new Item("testNameThird", "testDescriptionThird");
+            tracker.add(second);
+            tracker.add(third);
+            result = tracker.findAll();
+            assertThat(result.get(0).getDescription(), is("teatDescriptionSecond"));
+        }
     }
 
-    @Ignore
     @Test
-    public void whenFindItemById() {
-        Item seventh = new Item("testNameSeventh", "testDescriptionSeventh");
-        Item eighth = new Item("testNameEighth", "testDescriptionEighth");
-        sql.add(seventh);
-        sql.add(eighth);
-        assertThat(sql.findById(seventh.getId()).getDescription(), is("testDescriptionSeventh"));
+    public void whenFindItemByName() throws SQLException  {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            Item third = new Item("testNameThird", "testDescriptionThird");
+            tracker.add(second);
+            tracker.add(third);
+            result = tracker.findByName("testNameThird");
+            assertThat(result.get(0).getDescription(), is("testDescriptionThird"));
+        }
+    }
+
+    @Test
+    public void whenFindItemById() throws SQLException  {
+        try (TrackerSQL tracker = new TrackerSQL(ConnectionRollback.create(this.init()))) {
+            Item second = new Item("testNameSecond", "teatDescriptionSecond");
+            Item third = new Item("testNameThird", "testDescriptionThird");
+            tracker.add(second);
+            tracker.add(third);
+            assertThat(tracker.findById(third.getId()).getDescription(), is("testDescriptionThird"));
+        }
     }
 }
