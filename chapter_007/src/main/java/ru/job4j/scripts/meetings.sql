@@ -33,5 +33,7 @@ GROUP BY m.name;
 --Write a request that will receive a list of all meetings where there was not a single confirming participant.
 SELECT m.name
 FROM meetings AS m
-LEFT JOIN users_meetings AS u_m ON m.id = u_m.id_meeting
-WHERE u_m.status IS NULL;
+WHERE (
+	SELECT count (*) FROM users_meetings
+	WHERE id_meeting = m.id AND status = 'confirm'
+	) = 0;
