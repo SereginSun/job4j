@@ -1,6 +1,7 @@
 package ru.job4j.calculator;
+
 /**
- * Calculator - this is a class of simple arithmetic operations
+ * Calculator - this is a class of simple arithmetic operations.
  *
  * @author Vladimir Seregin (SereginSun@yandex.ru)
  *
@@ -10,59 +11,52 @@ package ru.job4j.calculator;
  */
 public class Calculator {
     private double result;
+
     /**
-     * method add
+     * method add - метод сложения.
      *
-     * метод скложения
+     * @param first - this is the first parameter.
      *
-     * @param first - this is the first parametr
-     *
-     * @param second - this is the second parametr
+     * @param second - this is the second parameter.
      */
     public void add(double first, double second) {
         this.result = first + second;
     }
     /**
-     *  method getResult
-     *
-     * метод возвращает значение поля result.
-     *
+     *  method getResult - метод возвращает значение поля result.
      */
     public double getResult() {
         return this.result;
     }
+
     /**
-     * method subtract
+     * method subtract - вычитание.
      *
-     * разница
+     * @param first - this is the first parameter.
      *
-     * @param first - this is the first parametr
-     *
-     * @param second - this is the second parametr
+     * @param second - this is the second parameter.
      */
     public void subtract(double first, double second) {
         this.result = first - second;
     }
+
     /**
-     * method div
+     * method div - деление.
      *
-     * частное
+     * @param first - this is the first parameter.
      *
-     * @param first - this is the first parametr
-     *
-     * @param second - this is the second parametr
+     * @param second - this is the second parameter.
      */
     public void div(double first, double second) {
         this.result = first / second;
     }
+
     /**
-     * method multiple
+     * method multiple - произведение параметров first и second.
      *
-     * произведение параметров first и second
+     * @param first - this is the first parameter.
      *
-     * @param first - this is the first parametr
-     *
-     * @param second - this is the second parametr
+     * @param second - this is the second parameter.
      */
     public void multiple(double first, double second) {
         this.result = first * second;
