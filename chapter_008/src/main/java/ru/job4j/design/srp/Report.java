@@ -1,16 +1,15 @@
 package ru.job4j.design.srp;
 
-import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * interface Store.
+ * interface Report.
  *
  * @author Seregin Vladimir (SereginSun@yandex.ru)
  * @version $Id$
  * @since 15.06.2020
  */
-public interface Store {
+public interface Report {
 
-    List<Employee> findBy(Predicate<Employee> filter);
+    String generate(Predicate<Employee> filter);
 }

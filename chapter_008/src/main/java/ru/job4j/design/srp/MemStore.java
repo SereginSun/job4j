@@ -5,6 +5,13 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * class MemStore.
+ *
+ * @author Seregin Vladimir (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 15.06.2020
+ */
 public class MemStore implements Store {
     private final List<Employee> employees = new ArrayList<>();
 
