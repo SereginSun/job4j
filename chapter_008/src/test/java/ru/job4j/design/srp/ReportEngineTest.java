@@ -17,7 +17,7 @@ import static org.junit.Assert.assertThat;
  */
 public class ReportEngineTest {
 
-    private final String LN = System.lineSeparator();
+    private static final String LN = System.lineSeparator();
 
     @Test
     public void whenOldGenerated() {
@@ -41,7 +41,7 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        Report ITReport = new ITReport(store);
+        Report itReport = new ITReport(store);
         StringBuilder expect = new StringBuilder()
                 .append("<!DOCTYPE html>").append(LN)
                 .append("<html>").append(LN)
@@ -67,7 +67,7 @@ public class ReportEngineTest {
                 .append("</table>").append(LN)
                 .append("</body>").append(LN)
                 .append("</html>");
-        assertThat(ITReport.generate(employee -> true), is(expect.toString()));
+        assertThat(itReport.generate(employee -> true), is(expect.toString()));
     }
 
     @Test
@@ -76,14 +76,14 @@ public class ReportEngineTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         store.add(worker);
-        Report AccReport = new AccReport(store);
+        Report accReport = new AccReport(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Hired; Fired; Salary").append(LN)
                 .append(worker.getName()).append(";").append(LN)
                 .append(worker.getHired()).append(";").append(LN)
                 .append(worker.getFired()).append(";").append(LN)
                 .append(new BigDecimal(worker.getSalary() / 69.58)).append("$");
-        assertThat(AccReport.generate(employee -> true), is(expect.toString()));
+        assertThat(accReport.generate(employee -> true), is(expect.toString()));
     }
 
     @Test
@@ -96,13 +96,13 @@ public class ReportEngineTest {
         store.add(workerFirst);
         store.add(workerSecond);
         store.add(workerThird);
-        Report HRReport = new HRReport(store);
+        Report hrReport = new HRReport(store);
         StringBuilder expect = new StringBuilder()
                 .append("Name; Salary").append(LN)
                 .append(workerSecond.getName()).append(";").append(workerSecond.getSalary()).append(LN)
                 .append(workerThird.getName()).append(";").append(workerThird.getSalary()).append(LN)
                 .append(workerFirst.getName()).append(";").append(workerFirst.getSalary()).append(LN);
-        assertThat(HRReport.generate(employee -> true), is(expect.toString()));
+        assertThat(hrReport.generate(employee -> true), is(expect.toString()));
     }
 
 }
