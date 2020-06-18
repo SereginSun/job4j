@@ -11,9 +11,9 @@ import java.util.function.Predicate;
  */
 
 public class XMLReport implements Report {
-    private final Store store;
-
     private static final String LN = System.lineSeparator();
+
+    private final Store store;
 
     public XMLReport(Store store) {
         this.store = store;

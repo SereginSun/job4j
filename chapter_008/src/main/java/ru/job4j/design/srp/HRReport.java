@@ -11,9 +11,9 @@ import java.util.function.Predicate;
  * @since 15.06.2020
  */
 public class HRReport implements Report {
-    private final Store store;
-
     private static final String LN = System.lineSeparator();
+
+    private final Store store;
 
     public HRReport(Store store) {
         this.store = store;

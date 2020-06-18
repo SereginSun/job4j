@@ -10,9 +10,9 @@ import java.util.function.Predicate;
  * @since 17.06.2020
  */
 public class JSONReport implements Report {
-    private final Store store;
-
     private static final String LN = System.lineSeparator();
+
+    private final Store store;
 
     public JSONReport(Store store) {
         this.store = store;
