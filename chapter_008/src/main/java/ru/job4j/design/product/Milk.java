@@ -1,4 +1,4 @@
-package ru.job4j.design.productStore;
+package ru.job4j.design.product;
 
 import java.time.LocalDate;
 

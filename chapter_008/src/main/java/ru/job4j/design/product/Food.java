@@ -1,4 +1,4 @@
-package ru.job4j.design.productStore;
+package ru.job4j.design.product;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -6,25 +6,25 @@ import java.util.Objects;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Food {
-    private String Name;
+    private String name;
     private LocalDate expirationDate;
     private LocalDate createDate;
     private Double price;
     private Double discount;
 
     public Food(String name, LocalDate expirationDate, LocalDate createDate, Double price) {
-        Name = name;
+        this.name = name;
         this.expirationDate = expirationDate;
         this.createDate = createDate;
         this.price = price;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public LocalDate getExpirationDate() {
@@ -68,29 +68,33 @@ public class Food {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Food food = (Food) o;
-        return Objects.equals(Name, food.Name) &&
-                Objects.equals(expirationDate, food.expirationDate) &&
-                Objects.equals(createDate, food.createDate) &&
-                Objects.equals(price, food.price) &&
-                Objects.equals(discount, food.discount);
+        return Objects.equals(name, food.name)
+                && Objects.equals(expirationDate, food.expirationDate)
+                && Objects.equals(createDate, food.createDate)
+                && Objects.equals(price, food.price)
+                && Objects.equals(discount, food.discount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Name, expirationDate, createDate, price, discount);
+        return Objects.hash(name, expirationDate, createDate, price, discount);
     }
 
     @Override
     public String toString() {
-        return "Food{" +
-                "Name='" + Name + '\'' +
-                ", expirationDate=" + expirationDate +
-                ", createDate=" + createDate +
-                ", price=" + price +
-                ", discount=" + discount +
-                '}';
+        return "Food{"
+                + "Name='" + name + '\''
+                + ", expirationDate=" + expirationDate
+                + ", createDate=" + createDate
+                + ", price=" + price
+                + ", discount=" + discount
+                + '}';
     }
 }
