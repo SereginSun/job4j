@@ -8,8 +8,11 @@ public class Shop implements Store {
 
     @Override
     public boolean accept(Food food) {
-
-        return false;
+        double quality = food.convertQualityToPercent(food.getCreateDate(), food.getExpirationDate());
+        if (quality >= 75) {
+            food.setDiscount(15.0);
+        }
+        return quality >= 25 && quality < 100;
     }
 
     @Override

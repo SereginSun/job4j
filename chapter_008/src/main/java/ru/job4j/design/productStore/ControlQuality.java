@@ -1,34 +1,23 @@
 package ru.job4j.design.productStore;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ControlQuality {
 
     private List<Store> storages;
 
-    public ControlQuality() {
-        this.storages = new ArrayList<>();
+    public ControlQuality(List<Store> storages) {
+        this.storages = storages;
     }
 
-    public void checkFood(List<Food> foods) {
-
+    public void addFood(List<Food> foods) {
+        for (Food food : foods) {
+            for (Store storage : storages) {
+                if (storage.accept(food)) {
+                    storage.add(food);
+                    break;
+                }
+            }
+        }
     }
-
-    public double convertQualityToPercent(LocalDate createDate, LocalDate expirationDate) {
-        LocalDate today = LocalDate.now();
-        long allDays = DAYS.between(createDate, expirationDate);
-        long remainingDays = DAYS.between(createDate, today);
-        return (double) remainingDays / allDays * 100;
-    }
-
-    public void addFood(Food food, int discount) {
-        double quality = this.convertQualityToPercent(food.getCreateDate(), food.getExpirationDate());
-
-    }
-
-
 }

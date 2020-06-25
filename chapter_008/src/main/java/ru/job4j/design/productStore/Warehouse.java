@@ -8,17 +8,17 @@ public class Warehouse implements Store {
 
     @Override
     public boolean accept(Food food) {
-
-        return false;
+        double quality = food.convertQualityToPercent(food.getCreateDate(), food.getExpirationDate());
+        return quality < 25;
     }
 
     @Override
     public void add(Food food) {
-
+        foodList.add(food);
     }
 
     @Override
     public List<Food> getFood() {
-        return null;
+        return foodList;
     }
 }

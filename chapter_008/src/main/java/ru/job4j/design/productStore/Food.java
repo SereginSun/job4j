@@ -1,6 +1,9 @@
 package ru.job4j.design.productStore;
 
 import java.time.LocalDate;
+import java.util.Objects;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class Food {
     private String Name;
@@ -54,6 +57,30 @@ public class Food {
 
     public void setDiscount(Double discount) {
         this.discount = discount;
+    }
+
+    public double convertQualityToPercent(LocalDate createDate, LocalDate expirationDate) {
+        LocalDate today = LocalDate.now();
+        long allDays = DAYS.between(createDate, expirationDate);
+        long remainingDays = DAYS.between(createDate, today);
+        return (double) remainingDays / allDays * 100;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Food food = (Food) o;
+        return Objects.equals(Name, food.Name) &&
+                Objects.equals(expirationDate, food.expirationDate) &&
+                Objects.equals(createDate, food.createDate) &&
+                Objects.equals(price, food.price) &&
+                Objects.equals(discount, food.discount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Name, expirationDate, createDate, price, discount);
     }
 
     @Override
