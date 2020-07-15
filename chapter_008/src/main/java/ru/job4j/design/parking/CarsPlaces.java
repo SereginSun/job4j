@@ -22,11 +22,11 @@ public class CarsPlaces extends Places {
     @Override
     public boolean park(Auto auto) {
         boolean result = false;
-        if (("a car").equals(auto.getType()) && getFreePlaces() >= 1) {
+        if (("single").equals(auto.getType()) && getFreePlaces() >= 1) {
             cars.add(auto);
             count++;
             result = true;
-        } else if (("a truck").equals(auto.getType()) && getFreePlaces() >= 2) {
+        } else if (("double").equals(auto.getType()) && getFreePlaces() >= 2) {
             cars.add(auto);
             count += 2;
             result = true;
@@ -40,9 +40,9 @@ public class CarsPlaces extends Places {
      * @return true if the vehicle is removes, otherwise it is a false.
      */
     public boolean unpark(Auto car) {
-        cars.stream().filter(auto -> auto.getNumber().equals(car.getNumber()) && auto.getType().equals("a car"))
+        cars.stream().filter(auto -> auto.getNumber().equals(car.getNumber()) && auto.getType().equals("single"))
                 .findFirst().ifPresent(auto -> count--);
-        cars.stream().filter(auto -> auto.getNumber().equals(car.getNumber()) && auto.getType().equals("a truck"))
+        cars.stream().filter(auto -> auto.getNumber().equals(car.getNumber()) && auto.getType().equals("double"))
                 .findFirst().ifPresent(auto -> count -= 2);
         return cars.removeIf(auto -> auto.getNumber().equals(car.getNumber()));
     }

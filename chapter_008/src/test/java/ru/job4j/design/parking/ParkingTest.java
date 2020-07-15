@@ -25,8 +25,8 @@ public class ParkingTest {
 
     @Test
     public void whenTestType() {
-        assertEquals("a car", BaseAuto.car("н321вн36").getType());
-        assertEquals("a truck", BaseAuto.truck("к876хх136").getType());
+        assertEquals("single", BaseAuto.car("н321вн36").getType());
+        assertEquals("double", BaseAuto.truck("к876хх136").getType());
     }
 
     @Test
@@ -133,5 +133,14 @@ public class ParkingTest {
         assertEquals(0, parking.getFreePlaces());
         assertEquals(Set.of(secondTruck, thirdTruck), parking.getTrucks());
         assertEquals(Set.of(firstTruck), parking.getCars());
+    }
+
+    @Test
+    public void whenParkingBus() {
+        Parking parking = new Parking(2, 2);
+        Auto bus = BaseAuto.bus("н123ор36");
+        parking.park(bus);
+        assertEquals(2, parking.getFreePlaces());
+        assertEquals(Set.of(bus), parking.getCars());
     }
 }

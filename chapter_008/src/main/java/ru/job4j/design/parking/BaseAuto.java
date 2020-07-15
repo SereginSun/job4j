@@ -24,7 +24,7 @@ public class BaseAuto implements Auto {
      */
     public static BaseAuto car(String number) {
         BaseAuto car = new BaseAuto(number);
-        car.setType("a car");
+        car.setType("single");
         return car;
     }
 
@@ -35,12 +35,18 @@ public class BaseAuto implements Auto {
      */
     public static BaseAuto truck(String number) {
         BaseAuto truck = new BaseAuto(number);
-        truck.setType("a truck");
+        truck.setType("double");
         return truck;
     }
 
+    public static BaseAuto bus(String number) {
+        BaseAuto bus = new BaseAuto(number);
+        bus.setType("double");
+        return bus;
+    }
+
     /**
-     * The method sets the type of vehicle.
+     * The method sets the type of parking occupied by the vehicle.
      * @param type - the type of vehicle.
      */
     public void setType(String type) {
@@ -57,7 +63,7 @@ public class BaseAuto implements Auto {
     }
 
     /**
-     * The method returns a type of vehicle.
+     * The method returns a type of parking occupied by the vehicle.
      * @return a type of vehicle.
      */
     @Override
