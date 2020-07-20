@@ -11,5 +11,5 @@ public interface Auto {
 
     String getNumber();
 
-    String getType();
+    int getSize();
 }

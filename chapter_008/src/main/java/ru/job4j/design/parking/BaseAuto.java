@@ -11,47 +11,50 @@ import java.util.Objects;
  */
 public class BaseAuto implements Auto {
     private final String number;
-    private String type;
+    private final int size;
 
-    public BaseAuto(String number) {
+    public BaseAuto(String number, int size) {
         this.number = number;
+        this.size = size;
     }
 
     /**
      * Factory method creating class object Car.
      * @param number vehicle number.
+     * @param size vehicle size.
      * @return class object Car.
      */
-    public static BaseAuto car(String number) {
-        BaseAuto car = new BaseAuto(number);
-        car.setType("single");
-        return car;
+    public static BaseAuto car(String number, int size) {
+        return new BaseAuto(number, size);
     }
 
     /**
      * Factory method creating class object Truck.
      * @param number vehicle number.
+     * @param size vehicle size.
      * @return class object Truck.
      */
-    public static BaseAuto truck(String number) {
-        BaseAuto truck = new BaseAuto(number);
-        truck.setType("double");
-        return truck;
+    public static BaseAuto truck(String number, int size) {
+        return new BaseAuto(number, size);
     }
 
-    public static BaseAuto bus(String number) {
-        BaseAuto bus = new BaseAuto(number);
-        bus.setType("double");
-        return bus;
+    /**
+     * Factory method creating class object Bus.
+     * @param number vehicle number.
+     * @param size vehicle size.
+     * @return class object Bus.
+     */
+    public static BaseAuto bus(String number, int size) {
+        return new BaseAuto(number, size);
     }
 
     /**
      * The method sets the type of parking occupied by the vehicle.
      * @param type - the type of vehicle.
      */
-    public void setType(String type) {
-        this.type = type;
-    }
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     /**
      * The method returns a number of vehicle.
@@ -63,13 +66,14 @@ public class BaseAuto implements Auto {
     }
 
     /**
-     * The method returns a type of parking occupied by the vehicle.
-     * @return a type of vehicle.
+     * The method returns a size of parking occupied by the vehicle.
+     * @return a vehicle size.
      */
     @Override
-    public String getType() {
-        return type;
+    public int getSize() {
+        return size;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -80,12 +84,12 @@ public class BaseAuto implements Auto {
             return false;
         }
         BaseAuto baseAuto = (BaseAuto) o;
-        return type.equals(baseAuto.type)
+        return size == baseAuto.size
                 && Objects.equals(number, baseAuto.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, type);
+        return Objects.hash(number, size);
     }
 }

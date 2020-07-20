@@ -11,9 +11,9 @@ import java.util.Set;
  */
 public interface IParking {
 
-    boolean park(Auto car);
+    void park(Auto car);
 
-    boolean unpark(Auto car);
+    void unpark(Auto car);
 
     int getFreePlaces();
 
