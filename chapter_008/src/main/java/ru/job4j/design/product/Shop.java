@@ -1,10 +1,6 @@
 package ru.job4j.design.product;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Shop implements Store {
-    private final List<Food> foodList = new ArrayList<>();
+public class Shop extends BaseStore {
 
     @Override
     public boolean accept(Food food) {
@@ -13,15 +9,5 @@ public class Shop implements Store {
             food.setDiscount(15.0);
         }
         return quality >= 25 && quality < 100;
-    }
-
-    @Override
-    public void add(Food food) {
-        foodList.add(food);
-    }
-
-    @Override
-    public List<Food> getFood() {
-        return foodList;
     }
 }
