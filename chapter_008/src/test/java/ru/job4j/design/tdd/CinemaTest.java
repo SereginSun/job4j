@@ -30,7 +30,7 @@ public class CinemaTest {
         assertThat(sessions, is(Collections.singletonList(new Session3D())));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void whenBuyTicketWithWrongDate() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
@@ -40,7 +40,7 @@ public class CinemaTest {
         assertNull(ticket);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void whenNoFreePlaces() {
         Account account = new AccountCinema();
         Cinema cinema = new Cinema3D();
