@@ -1,6 +1,7 @@
 package ru.job4j.design.tdd;
 
 import org.junit.Test;
+import ru.job4j.design.tdd.cinema.*;
 
 import java.util.Calendar;
 import java.util.Collections;
