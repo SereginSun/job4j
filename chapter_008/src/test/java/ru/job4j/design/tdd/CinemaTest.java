@@ -11,6 +11,13 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
+/**
+ * class CinemaTest.
+ *
+ * @author Seregin Vladimir (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 05.08.2020
+ */
 public class CinemaTest {
 
     @Test
@@ -57,5 +64,4 @@ public class CinemaTest {
         List<Session> sessions = cinema.find(session -> true);
         assertThat(sessions.size(), is(0));
     }
-
 }

@@ -8,6 +8,13 @@ import java.util.Map;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
+/**
+ * class GeneratorTest.
+ *
+ * @author Seregin Vladimir (SereginSun@yandex.ru)
+ * @version $Id$
+ * @since 06.08.2020
+ */
 public class GeneratorTest {
 
     @Test
