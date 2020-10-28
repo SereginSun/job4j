@@ -1,6 +1,5 @@
 package ru.job4j.design.tictactoe;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,8 +7,9 @@ import java.util.Random;
  * class CPULogic implements ICPULogic the interface describes the logic of the player's computer's turn.
  *
  * @author Seregin Vladimir (SereginSun@yandex.ru)
- * @version 1.1
+ * @version 1.2
  * @since 06.10.2020
+ * @
  */
 public class CPULogic implements ICPULogic {
     private final IBoard grid;
@@ -123,15 +123,7 @@ public class CPULogic implements ICPULogic {
 
     @Override
     public int makeRandomComputerTurn() {
-        List<Cell> emptyCell = new ArrayList<>();
-        for (int i = 0; i < grid.getSize(); i++) {
-            for (int j = 0; j < grid.getSize(); j++) {
-                if (grid.getValue(i, j) == CellValue.EMPTY) {
-                    emptyCell.add(new Cell(i, j));
-                }
-            }
-        }
-        Cell randomCell = emptyCell.get(new Random().nextInt(emptyCell.size()));
-        return grid.getCellsNumb(randomCell.getRowIndex(), randomCell.getColIndex());
+        List<Integer> emptyCell = grid.getListEmptyCells();
+        return emptyCell.get(new Random().nextInt(emptyCell.size()));
     }
 }
