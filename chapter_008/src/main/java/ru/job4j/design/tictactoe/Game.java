@@ -23,9 +23,9 @@ public class Game implements IGame {
     @Override
     public void init(Input input, Consumer<String> output) {
         IBoard grid = new GameIBoard(gridSize);
-        IDisplay IDisplay = new PrintGrid(grid);
+        IDisplay iDisplay = new PrintGrid(grid);
         grid.fillGameTable();
-        IDisplay.printGameTable();
+        iDisplay.printGameTable();
         IPlayer user = new Human(grid, input);
         CPULogic logicBot = new CPULogic(grid);
         IPlayer bot = new Computer(logicBot, output);
@@ -34,10 +34,10 @@ public class Game implements IGame {
         Logic logic = new Logic(grid, output);
         boolean isWin = true;
         while (isWin) {
-            for (IPlayer IPlayer : priority) {
-                IPlayer.makeTurn();
-                IDisplay.printGameTable();
-                if (!logic.handleTurn(IPlayer.getSign())) {
+            for (IPlayer player : priority) {
+                player.makeTurn();
+                iDisplay.printGameTable();
+                if (!logic.handleTurn(player.getSign())) {
                     isWin = false;
                     break;
                 }
