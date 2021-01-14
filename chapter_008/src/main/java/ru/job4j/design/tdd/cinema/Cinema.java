@@ -1,6 +1,6 @@
 package ru.job4j.design.tdd.cinema;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -28,7 +28,7 @@ public interface Cinema {
      * @param date - date of the session.
      * @return object Ticket.
      */
-    Ticket buy(Account account, int row, int column, Calendar date);
+    Ticket buy(Account account, int row, int column, LocalDate date);
 
     /**
      * Session adding method.
