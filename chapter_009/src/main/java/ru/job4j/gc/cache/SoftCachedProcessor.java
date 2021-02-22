@@ -25,14 +25,27 @@ public class SoftCachedProcessor {
      * @return the contents of the text file.
      */
     public String getValue(String key) {
-        SoftReference<String> fileRef = storage.get(key);
-        String text;
-        if (storage.get(key) != null && fileRef.get() != null) {
-            text = fileRef.get();
+        String strong;
+        if (storage.containsKey(key)) {
+            strong = storage.get(key).get();
+            if (strong == null) {
+                strong = loadFile(key);
+            }
         } else {
-            text = loadFile(key);
+            strong = put(key);
         }
-        return text;
+        return strong;
+    }
+
+    /**
+     * This method adds a key to the map and wraps the contents of the file in a SoftReference.
+     * @param key File name.
+     * @return the contents of the text file.
+     */
+    private String put(String key)  {
+        String value = loadFile(key);
+        storage.put(key, new SoftReference<>(value));
+        return value;
     }
 
     /**
