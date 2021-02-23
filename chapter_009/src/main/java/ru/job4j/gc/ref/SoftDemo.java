@@ -25,7 +25,7 @@ public class SoftDemo {
                 String value = String.valueOf(System.currentTimeMillis());
 
                 @Override
-                protected void finalize () {
+                protected void finalize() {
                     System.out.println("Object removed!");
                 }
             }));

@@ -36,7 +36,7 @@ public class StrongDemo {
                 Object innerObject = new Object() {
                     @Override
                     protected void finalize() throws Throwable {
-                        System.out.println("Remove inner object!");;
+                        System.out.println("Remove inner object!");
                     }
                 };
             };
