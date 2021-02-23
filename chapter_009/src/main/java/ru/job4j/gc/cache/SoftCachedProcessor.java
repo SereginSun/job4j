@@ -55,8 +55,7 @@ public class SoftCachedProcessor {
      */
     private String loadFile(String fileName) {
         StringBuilder text = new StringBuilder();
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(new File(this.path, fileName)));
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(this.path, fileName)))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 text.append(line);
